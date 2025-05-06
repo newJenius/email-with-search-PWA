@@ -1,0 +1,48 @@
+.invite-reg-container-invREG {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000;
+  }
+  
+  .invite-box-invREG {
+    background-color: rgb(17, 17, 17);
+    padding: 32px 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .invite-input-invREG {
+    width: 95%;
+    padding: 12px 10px;
+    font-size: 16px;
+    margin: 16px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .invite-button-invREG {
+    background-color: #1f7aec;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .invite-button-invREG:hover {
+    background-color: #145edc;
+  }
+  
+  .success-message-invREG {
+    color: green;
+    font-weight: bold;
+  }
+  

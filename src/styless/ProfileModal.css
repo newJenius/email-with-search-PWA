@@ -1,0 +1,122 @@
+.profile-modal-pf-modal {
+    width: 100vw;
+    height: auto;
+    background-color: rgb(0, 0, 0);
+
+  }
+  
+  .close-btn-pf-modal {
+    position: absolute;
+    top: 12px;
+    right: 1px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #afafaf;
+    cursor: pointer;
+  }
+  
+  .avatar-box-pf-modal {
+    margin-bottom: 1px;
+  }
+  
+  .avatar-pf-modal {
+    width: 100vw;
+    height: 40vh;
+    border-radius: 3%;
+    object-fit: cover;
+    background: #000000;
+  }
+  
+  .placeholder-pf-modal {
+    background-color: #ffffff;
+  }
+  
+  .username-pf-modal {
+    color: #777;
+    font-size: 12px;
+    margin-top: 2px;
+    padding-left: 14px;
+    text-align: left;
+  }
+
+  .border-bottom-pf-modal{
+    border-bottom: 0.1px solid rgb(110, 110, 110);
+    padding: 0px 0px;
+    margin-right: 70vw;
+    margin-left: 14px;
+  }
+
+  .real_name-pf-modal {
+    color: #ffffff;
+    font-size: 15px;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    padding-left: 14px;
+  }
+
+  .bio-pf-modal {
+    color: #aaaaaa;
+    font-size: 12px;
+    margin-top: -3px;
+    margin-bottom: 0px;
+    padding-left: 14px;
+  }
+  
+  .message-btn-pf-modal {
+    background-color: #20519e;
+    padding: 12px 0px;
+    border: none;
+    border-radius: 10px;
+    width:96vw;
+    z-index: 200;
+    font-weight: bold;
+    position: fixed;
+    color: #ffffff;
+  }
+
+  .message-btn-field-pd-modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    padding: 3px 0;
+    z-index: 200;
+    margin-bottom: 0px;
+    height: 50px;
+    padding-left: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .about_me-box-pf-modal {
+    background-color: #000000;
+    margin: 12px;
+    padding: 1px;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 13px;
+    padding-bottom: 400px;
+  }
+  
+  .centered-pf-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  .loader-pf-modal {
+    width: 32px;
+    height: 32px;
+    border: 4px solid #ccc;
+    border-top-color: #003322;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  

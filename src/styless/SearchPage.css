@@ -1,0 +1,92 @@
+.search-page-searchtab {
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .search-bar-searchtab {
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+  
+  .search-input-searchtab {
+    flex: 1;
+    padding: 6px 16px;
+    width: 235px;
+    border: none;
+    border-radius: 10px;
+    background-color: #272727;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .search-cancel-searchtab {
+    margin-left: 0px;
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-size: 16px;
+  }
+
+  .search-icon-searchtab {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    height: 15px;
+    color: #ffffff;
+    opacity: 0.6;
+  }
+  
+  .search-results-searchtab {
+    list-style: none;
+    padding: 0px 4px;
+    margin: 0px;
+  }
+  
+  .search-result-item-searchtab {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px ;
+    margin-left: -6px;
+    border-bottom: 0.5px solid #222222;
+  }
+  
+  .avatar-searchtab {
+    width: 40px;
+    height: 40px;
+    border-radius: 20%;
+    object-fit: cover;
+    background-color: #ccc;
+    margin-right: 12px;
+  }
+  
+  .user-details-searchtab {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .username-searchtab {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .bio-searchtab {
+    color: #888;
+    font-size: 12px;
+  }
+  
+  .close-btn-searchtab {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    padding: 0 5px;
+    cursor: pointer;
+  }
+  

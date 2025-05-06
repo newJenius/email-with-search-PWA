@@ -1,0 +1,51 @@
+/* PurchasePage.css */
+.purchase-container-pp {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    gap: 10px;
+    padding-top: 20px;
+    background-color: #000000;
+    color: #fff;
+
+  }
+  
+  .purchase-option-pp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    margin: 0px 16px;
+    border-radius: 10px;
+    padding: 8px 24px;
+  }
+  
+  .purchase-option-pp:hover {
+    background-color: #222;
+  }
+  
+  .purchase-option-pp.selected {
+    background-color: #2a2a2a;
+    outline: 0.9px solid #00bfff;
+  }
+  
+  .star-section-pp,
+  .ton-section-pp {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .star-icon-pp,
+  .ton-icon-pp {
+    font-size: 14px;
+    color: rgb(239, 241, 77);
+  }
+  
+  .star-text-pp,
+  .ton-text-pp {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
