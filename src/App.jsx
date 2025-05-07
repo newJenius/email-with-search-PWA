@@ -47,6 +47,7 @@ function App() {
 
 
   return (
+    
     <UIProvider>
       <BrowserRouter>
       
@@ -75,6 +76,7 @@ function App() {
       </BrowserRouter>
       
     </UIProvider>
+  
     
   );
 }
