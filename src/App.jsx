@@ -22,6 +22,17 @@ import Confirm from "./pages/Confirm.jsx";
 function App() {
   const [isBottomNavVisible, setBottomNavVisible] = useState(true);
 
+  useEffect(() => {
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        // например, установить глобальное состояние пользователя
+        setUser(session.user);
+      }
+    };
+    getSession();
+  }, []);
+  
   // Загрузка состояния из localStorage при первом рендере
   useEffect(() => {
     const saved = localStorage.getItem('ui-bottom-visible');

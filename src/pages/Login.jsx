@@ -45,10 +45,22 @@ export default function Login() {
   
 
   const handleSignIn = async () => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) alert('Ошибка входа: ' + error.message);
-    else navigate('/'); // или '/profile'
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  
+    if (error) {
+      alert('Ошибка входа: ' + error.message);
+    } else {
+      // Успешный вход
+      if (data?.session) {
+        localStorage.setItem('supabase.session', JSON.stringify(data.session));
+      }
+      navigate('/'); // или '/profile'
+    }
   };
+  
+
+  
+//  
 
   if(checkingEmail){
     return <p className='login-container-lg'>Проверка email...</p>;

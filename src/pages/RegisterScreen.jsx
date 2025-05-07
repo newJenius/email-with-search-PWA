@@ -124,6 +124,11 @@ export default function RegisterScreen() {
       return;
     }
 
+    if (signUpData?.session) {
+      localStorage.setItem('supabase.session', JSON.stringify(signUpData.session));
+    }
+    
+
     const { error: insertError } = await supabase.from('profiles').upsert({
       id: userId,
       username,
