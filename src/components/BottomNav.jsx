@@ -12,7 +12,7 @@ export default function BottomNav() {
   if(!isBottomNavVisible) return null;
 
   const tabs = [
-    { path: "/home", icon: <AiFillHome size={28} /> },
+    { path: "/", icon: <AiFillHome size={28} /> },
     { path: "/chat", icon: <AiOutlineMessage size={28} />},
     { path: "/about", icon: <IoIosInformationCircleOutline size={32} />},
     { path: "/profile", icon: <AiOutlineUser size={28} />},

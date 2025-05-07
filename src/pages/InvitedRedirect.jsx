@@ -21,7 +21,7 @@ export default function InviteRedirect() {
         navigate(`/register?mode=invite&by=${username}`);
       } else {
         alert('Неверная ссылка приглашения');
-        navigate('/');
+        navigate('/invitereg');
       }
     })();
   }, [username, navigate]);

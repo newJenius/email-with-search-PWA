@@ -17,6 +17,7 @@ import InviteModal from "./pages/InviteModal.jsx";
 import InviteRedirect from "./pages/InvitedRedirect.jsx";
 import InviteRegScreen from "./pages/InviteRegScreen.jsx";
 import MessageListener from "./pages/MessageListener.jsx";
+import Confirm from "./pages/Confirm.jsx";
 
 function App() {
   const [isBottomNavVisible, setBottomNavVisible] = useState(true);
@@ -52,8 +53,8 @@ function App() {
         <div className="min-h-screen pb-16 bg-black">
           
           <Routes>
-            <Route path="/" element={<InviteRegScreen />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/invitereg" element={<InviteRegScreen />} />
+            <Route path="/" element={<Home />} />
             <Route path="/chat" element={<ChatListScreen />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/search" element={<SearchPage />} />
@@ -64,11 +65,12 @@ function App() {
             <Route path="/about" element={<AboutScreen />} />
             <Route path="/invite" element={<InviteModal />} />
             <Route path="/invite/:username" element={<InviteRedirect />} />
+            <Route path="/confirm" element={<Confirm />} />
             
           </Routes>
           
         </div>
-        {userId && <MessageListener userId={userId} />}
+        {userId && <MessageListener userId={userId}/>}
         {isBottomNavVisible && <BottomNav />}
       </BrowserRouter>
       

@@ -47,7 +47,7 @@ export default function Login() {
   const handleSignIn = async () => {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) alert('Ошибка входа: ' + error.message);
-    else navigate('/home'); // или '/profile'
+    else navigate('/'); // или '/profile'
   };
 
   if(checkingEmail){

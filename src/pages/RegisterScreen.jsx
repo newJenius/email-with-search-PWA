@@ -155,8 +155,8 @@ export default function RegisterScreen() {
       return;
     }
 
-    alert('Успешно! Советуем запомнить email и пароль.');
-    navigate('/home');
+    alert('Успешно! Подтвердите email и войдите в аккаунт.');
+    navigate('/login');
   };
 
   if (checkingEmail) {

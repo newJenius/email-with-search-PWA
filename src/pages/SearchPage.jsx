@@ -59,7 +59,7 @@ export default function SearchPage() {
           onClick={() => {
             sessionStorage.removeItem('search_query');
             sessionStorage.removeItem('search_results');
-            navigate('/home')
+            navigate('/')
           }}
         className="search-cancel-searchtab">Cancel</button>
       </div>
