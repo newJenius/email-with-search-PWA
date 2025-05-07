@@ -17,7 +17,6 @@ export default function Home() {
       } = await supabase.auth.getSession();
 
       if (!session || !session.user) {
-        console.log("No session found, redirecting to register.");
         navigate("/register");
         return;
       }
