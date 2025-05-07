@@ -17,7 +17,7 @@ export default function Home() {
       } = await supabase.auth.getSession();
 
       if (!session || !session.user) {
-        navigate("/register");
+        navigate("/");
         return;
       }
 
