@@ -8,33 +8,33 @@ export default function Home() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+  // useEffect(() => {
+  //   const checkAuth = async () => {
+  //     const {
+  //       data: { session },
+  //     } = await supabase.auth.getSession();
 
-      if (!session || !session.user) {
-        navigate("/register");
-        return;
-      }
+  //     if (!session || !session.user) {
+  //       navigate("/register");
+  //       return;
+  //     }
 
-      // Проверка, есть ли профиль
-      const { data: profile, error } = await supabase
-        .from("profiles")
-        .select("id")
-        .eq("id", session.user.id)
-        .single();
+  //     // Проверка, есть ли профиль
+  //     const { data: profile, error } = await supabase
+  //       .from("profiles")
+  //       .select("id")
+  //       .eq("id", session.user.id)
+  //       .single();
 
-      if (error || !profile) {
-        navigate("/register");
-      } else {
-        setLoading(false);
-      }
-    };
+  //     if (error || !profile) {
+  //       navigate("/register");
+  //     } else {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    checkAuth();
-  }, [navigate]);
+  //   checkAuth();
+  // }, [navigate]);
 
   if (loading) return <div>Загрузка...</div>;
 
