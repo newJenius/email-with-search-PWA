@@ -86,21 +86,21 @@ export default function RegisterScreen() {
       return;
     }
 
-    // const { data: existingUser, error: usernameError } = await supabase
-    //   .from('profiles')
-    //   .select('id')
-    //   .eq('username', username)
-    //   .single();
+    const { data: existingUser, error: usernameError } = await supabase
+      .from('public_user_emails')
+      .select('username')
+      .eq('username', username)
+      .single();
 
-    // if (existingUser) {
-    //   alert('Это имя пользователя уже занято.');
-    //   return;
-    // }
+    if (existingUser) {
+      alert('Это имя пользователя уже занято.');
+      return;
+    }
 
-    // if (usernameError && usernameError.code !== 'PGRST116') {
-    //   alert('Ошибка при проверке имени: ' + usernameError.message);
-    //   return;
-    // }
+    if (usernameError && usernameError.code !== 'PGRST116') {
+      alert('Ошибка при проверке имени: ' + usernameError.message);
+      return;
+    }
 
     const { data: emailExists, error: emailCheckError } = await supabase
       .from('public_user_emails')
