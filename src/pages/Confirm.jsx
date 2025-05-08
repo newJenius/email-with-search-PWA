@@ -57,7 +57,7 @@ export default function Confirm() {
       }
 
       setMessage('Бонус начислен! Перенаправляем...');
-      setTimeout(() => navigate('/'), 2000);
+      setTimeout(() => navigate('/login'), 2000);
     };
 
     confirm();
