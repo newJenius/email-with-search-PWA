@@ -86,19 +86,35 @@ export default function RegisterScreen() {
       return;
     }
 
-    const { data: existingUser, error: usernameError } = await supabase
-      .from('profiles')
-      .select('id')
-      .eq('username', username)
+    // const { data: existingUser, error: usernameError } = await supabase
+    //   .from('profiles')
+    //   .select('id')
+    //   .eq('username', username)
+    //   .single();
+
+    // if (existingUser) {
+    //   alert('Это имя пользователя уже занято.');
+    //   return;
+    // }
+
+    // if (usernameError && usernameError.code !== 'PGRST116') {
+    //   alert('Ошибка при проверке имени: ' + usernameError.message);
+    //   return;
+    // }
+
+    const { data: emailExists, error: emailCheckError } = await supabase
+      .from('public_user_emails')
+      .select('email')
+      .eq('email', email)
       .single();
 
-    if (existingUser) {
-      alert('Это имя пользователя уже занято.');
+    if (emailExists) {
+      alert('Этот email уже зарегистрирован.');
       return;
     }
 
-    if (usernameError && usernameError.code !== 'PGRST116') {
-      alert('Ошибка при проверке имени: ' + usernameError.message);
+    if (emailCheckError && emailCheckError.code !== 'PGRST116') {
+      alert('Ошибка при проверке email: ' + emailCheckError.message);
       return;
     }
 
@@ -175,10 +191,12 @@ export default function RegisterScreen() {
 
   if (!emailApproved) {
     return (
-      <div className="register-container-reg">
-        <h1>Ошибка</h1>
-        <p>Регистрация доступна только по приглашению. Убедитесь, что вы используете правильную ссылку.</p>
-        <button className="havee-acc-btn-reg" onClick={() => navigate('/login')}>Уже есть аккаунт</button>
+      <div className="register-container-regg">
+        <h1 className='text-error-regg'>Ошибка</h1>
+        <p className='text-error-regg'>Регистрация доступна только по приглашению. Убедитесь, что вы используете правильную ссылку.</p>
+        <button className="havee-acc-btn-reg" onClick={() => navigate('/login')}>
+          <p>Уже есть аккаунт</p>
+          </button>
       </div>
     );
   }

@@ -38,7 +38,7 @@ export default function Home() {
     checkAuth();
   }, [navigate]);
 
-  if (loading) return <div>Загрузка...</div>;
+  if (loading) return <div className="loading-bitch-hm">Загрузка...</div>;
 
   return (
     <div className="container-hm">
