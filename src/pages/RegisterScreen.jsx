@@ -123,12 +123,13 @@ export default function RegisterScreen() {
       password,
       options: {
         emailRedirectTo: 'https://nermes.xyz/confirm',
-        // data: {
-        //   username,
+         data: {
+           username,
         //   real_name: realName,
-        // },
+         },
       },
     });
+    
 
     if (signUpError) {
       alert('Ошибка регистрации: ' + signUpError.message);
@@ -140,6 +141,12 @@ export default function RegisterScreen() {
       alert('Не удалось получить ID пользователя');
       return;
     }
+
+    await supabase.rpc('insert_invited_profile', {
+      p_user_id: userId,
+      p_username: username,
+      p_invited_by: invitedBy || null,
+    });
 
     if (signUpData?.session) {
       localStorage.setItem('supabase.session', JSON.stringify(signUpData.session));
@@ -206,13 +213,13 @@ export default function RegisterScreen() {
       <h1>Регистрация</h1>
       <p>Создайте аккаунт чтобы продолжить!</p>
       {invitedByUsername && <p>Вас пригласил @{invitedByUsername}</p>}
-      {/* <input
+      <input
         type="text"
         placeholder="Никнейм"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         className="input-reg"
-      /> */}
+      />
       <input
         type="email"
         placeholder='Почта'

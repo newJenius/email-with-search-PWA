@@ -49,10 +49,33 @@ export default function Login() {
   
     if (error) {
       alert('Ошибка входа: ' + error.message);
-    } else {
+      return;
+    } 
       // Успешный вход
       if (data?.session) {
         localStorage.setItem('supabase.session', JSON.stringify(data.session));
+
+        const user = data.session.user;
+
+        // Проверим, надо ли выдать бонус
+        const { data: profile, error: profileError } = await supabase
+          .from('profiles')
+          .select('id, invited_by, has_received_invite_bonus')
+          .eq('id', user.id)
+          .single();
+
+        if (profile && profile.invited_by && !profile.has_received_invite_bonus) {
+          const { error: bonusError } = await supabase.rpc('increment_balaance', {
+            user_id: profile.invited_by,
+            amount: 50
+        });
+
+          if (!bonusError) {
+            await supabase
+              .from('profiles')
+              .update({ has_received_invite_bonus: true })
+              .eq('id', user.id);
+          }
       }
       navigate('/'); // или '/profile'
     }
