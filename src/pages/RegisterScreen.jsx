@@ -76,7 +76,7 @@ export default function RegisterScreen() {
   }, [location.search]);
 
   const handleRegister = async () => {
-    if (!username || !email || !realName || !password) {
+    if (!email || !password) {      //if (!username || !email || !realName || !password) {
       alert('Заполните все поля');
       return;
     }
@@ -106,10 +106,11 @@ export default function RegisterScreen() {
       email,
       password,
       options: {
-        data: {
-          username,
-          real_name: realName,
-        },
+        emailRedirectTo: 'https://nermes.xyz/confirm',
+        // data: {
+        //   username,
+        //   real_name: realName,
+        // },
       },
     });
 
@@ -129,36 +130,40 @@ export default function RegisterScreen() {
     }
     
 
-    const { error: insertError } = await supabase.from('profiles').upsert({
-      id: userId,
-      username,
-      real_name: realName,
-      invited_by: invitedBy || null,
-      balance: 500,
-    });
+    // const { error: insertError } = await supabase.from('profiles').upsert({
+    //   id: userId,
+    //   username,
+    //   real_name: realName,
+    //   invited_by: invitedBy || null,
+    //   balance: 500,
+    // });
 
-    // Начисление 50 монет тому, кто пригласил
-    if (invitedBy) {
-      console.log('invitedBy =', invitedBy);
-      console.log('invoking bonus...');
-      const { data: bonusData, error: bonusError } = await supabase.rpc('increment_balaance', {
-        user_id: invitedBy,
-        amount: 50
-      });
+    // // Начисление 50 монет тому, кто пригласил
+    // if (invitedBy) {
+    //   console.log('invitedBy =', invitedBy);
+    //   console.log('invoking bonus...');
+    //   const { data: bonusData, error: bonusError } = await supabase.rpc('increment_balaance', {
+    //     user_id: invitedBy,
+    //     amount: 50
+    //   });
       
-      if (bonusError) {
-        console.error('Bonus error:', bonusError.message);
-      } else {
-        console.log('Bonus success:', bonusData);
-      }
+    //   if (bonusError) {
+    //     console.error('Bonus error:', bonusError.message);
+    //   } else {
+    //     console.log('Bonus success:', bonusData);
+    //   }
       
 
-    }
+    // }
 
-    if (insertError) {
-      alert('Ошибка при сохранении профиля: ' + insertError.message);
-      return;
-    }
+    // if (insertError) {
+    //   alert('Ошибка при сохранении профиля: ' + insertError.message);
+    //   return;
+    // }
+    // if (insertError) {
+    //   alert('Успешно! Подтвердите почту.');
+    //   return;
+    // }
 
     alert('Успешно! Подтвердите email и войдите в аккаунт.');
     navigate('/login');
@@ -173,6 +178,7 @@ export default function RegisterScreen() {
       <div className="register-container-reg">
         <h1>Ошибка</h1>
         <p>Регистрация доступна только по приглашению. Убедитесь, что вы используете правильную ссылку.</p>
+        <button className="havee-acc-btn-reg" onClick={() => navigate('/login')}>Уже есть аккаунт</button>
       </div>
     );
   }
@@ -182,13 +188,13 @@ export default function RegisterScreen() {
       <h1>Регистрация</h1>
       <p>Создайте аккаунт чтобы продолжить!</p>
       {invitedByUsername && <p>Вас пригласил @{invitedByUsername}</p>}
-      <input
+      {/* <input
         type="text"
         placeholder="Никнейм"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         className="input-reg"
-      />
+      /> */}
       <input
         type="email"
         placeholder='Почта'
@@ -196,13 +202,13 @@ export default function RegisterScreen() {
         onChange={(e) => setEmail(e.target.value)}
         className="input-reg"
       />
-      <input
+      {/* <input
         type="text"
         placeholder="Полное Имя (Тони Старк)"
         value={realName}
         onChange={(e) => setRealName(e.target.value)}
         className="input-reg"
-      />
+      /> */}
       <input
         type="password"
         placeholder="Придумайте пароль"
