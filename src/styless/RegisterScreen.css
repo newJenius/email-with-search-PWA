@@ -56,10 +56,10 @@
 
   .havee-acc-btn-reg{
     background-color: #0d7ee7;
-    width: 95vw;
+    width: 98vw;
+    margin: 0px 8px;
     position: fixed;
-    margin-top: 90vh;
-    margin-left: 10px;
+    margin-top: 65vh;
   }
   
   .login-link-reg span {
