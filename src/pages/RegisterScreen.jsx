@@ -244,9 +244,9 @@ export default function RegisterScreen() {
       <button onClick={handleRegister} className="register-button-reg">
         Зарегистрироваться
       </button>
-      {/* <p className="login-link-reg">
+      <p className="login-link-reg">
         Уже есть аккаунт? <span onClick={() => navigate('/login')}>Войти</span>
-      </p> */}
+      </p>
     </div>
   );
 }

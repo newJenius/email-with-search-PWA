@@ -413,10 +413,10 @@ export default function ChatScreen() {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Напишите сообщение"
             />
-            <button onClick={handleSendMessage} disabled={loading} className="icon-button-cs">
+            <button onClick={handleSendMessage} disabled={loading} className="icon-button2-cs">
               {loading ? '...' : <SendHorizonal size={24} />}
             </button>
-
+ 
           </div>
         )}
       </div>

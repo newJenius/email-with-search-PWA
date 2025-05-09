@@ -8,6 +8,8 @@ import { FaBarsStaggered } from "react-icons/fa6";
 import { FaInfo } from "react-icons/fa6";
 import { FaTimes } from 'react-icons/fa';
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import { IoIosSearch } from "react-icons/io";
+
 
 
 
@@ -61,7 +63,11 @@ export default function SearchPage() {
 
   return (
     <div className="search-page-searchtab">
-      <div className="search-bar-searchtab">
+      <div className="search-bar-searchtab relative">
+      <IoIosSearch 
+        className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none'
+        size={16}
+      />
         <input 
           ref={inputRef}
           className="search-input-searchtab"

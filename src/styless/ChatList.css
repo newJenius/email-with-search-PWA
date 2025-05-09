@@ -44,9 +44,11 @@
   width: 100vw;
   position: fixed;
   height: 50px;
-  padding-bottom: 10px;
+  margin-bottom: 6vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 300;
-  margin-top: 89vh;
   background-color: #000000fd;
 
 }
