@@ -9,20 +9,45 @@
   .search-bar-searchtab {
     display: flex;
     align-items: center;
+    background: none;
+    padding-top: 6px;
     background-color: #000000;
-    padding-left: 10px;
-    padding-top: 5px;
+    padding-bottom: 15px;
+    position: fixed;
+    bottom: 48px;
+    width: 100vw;
+    border-top: 0.1px solid rgb(46, 46, 46);
+  }
+
+  .icon-bars-topbar-searchtab{
+    width: 100vw;
+  }
+
+  .bars-icon-searchtab{
+    width: 10vw;
+    padding: 10px 0px;
+    background-color: #f10404;
+    margin-right: 0vw;
+  }
+
+  .chat-icon-searchtab{
+    padding: 8px 10px;
+    color: #3b82f6;
+    background-color: #000000;
+    border-bottom: 0.1px solid rgb(39, 39, 39);
   }
   
   .search-input-searchtab {
     flex: 1;
-    padding: 6px 16px;
-    width: 235px;
+    padding: 8px 16px;
+    margin-left: 6px;
+    margin-right: 6px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: #272727;
     font-size: 16px;
     outline: none;
+    z-index: 1000;
   }
   
   .search-cancel-searchtab {
@@ -89,4 +114,37 @@
     padding: 0 5px;
     cursor: pointer;
   }
+
+  .clear-button-searchtab {
+    position: absolute;
+    right: 12px;
+    top: 45%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a5a5a5;
+    z-index: 1001;
+  }
+
+  .text-searchbar-blbl-container{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    margin-right: 41vh;
+    padding-top: 2px;
+    margin-top: 85vh;
+  }
+
+  .text-searchbar-blbl{
+    color: rgb(61, 61, 247);
+    background-color: #0f0f0f;
+    padding: 6px 20px;
+    font-size: 13px;
+  }
+  
   

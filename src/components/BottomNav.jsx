@@ -14,7 +14,7 @@ export default function BottomNav() {
   const tabs = [
     { path: "/", icon: <AiFillHome size={28} /> },
     { path: "/chat", icon: <AiOutlineMessage size={28} />},
-    { path: "/about", icon: <IoIosInformationCircleOutline size={32} />},
+    // { path: "/about", icon: <IoIosInformationCircleOutline size={32} />},
     { path: "/profile", icon: <AiOutlineUser size={28} />},
   ];
 
@@ -29,7 +29,7 @@ export default function BottomNav() {
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",
-        backgroundColor: "#161616",
+        backgroundColor: "black",
         borderTop: "0px solid #333",
         zIndex: 9999,
       }}
@@ -46,7 +46,7 @@ export default function BottomNav() {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              color: isActive ? "#fff" : "#888",
+              color: isActive ? "#0067ff" : "#888",
               textDecoration: "none",
               fontSize: "12px",
               gap: "3px",

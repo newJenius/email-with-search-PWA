@@ -17,6 +17,12 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
   }
+
+  .back-button-faqq{
+    color: white;
+    margin-top: 50vh;
+    margin-left: 10px;
+  }
   
   .faq-item-faqqq:hover {
     background-color: #2a2a2a;

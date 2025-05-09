@@ -1,59 +1,136 @@
-import React, { useEffect, useState } from "react";
-import "../styless/Home.css";
-import { FiSearch } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
-import { supabase } from "../lib/supabaseClient";
+import React, { useState, useRef, useEffect } from 'react';
+import { supabase } from '../lib/supabaseClient';
+import '../styless/SearchPage.css';
+import '../styless/Home.css';
+import { useNavigate } from 'react-router-dom';
+import { useUI } from '../components/uiContext';
+import { FaBarsStaggered } from "react-icons/fa6";
+import { FaInfo } from "react-icons/fa6";
+import { FaTimes } from 'react-icons/fa';
+import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 
-export default function Home() {
+
+
+export default function SearchPage() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const inputRef = useRef(null);
+  // const { setBottomNavVisible } = useUI();
+
+  // useEffect(() => {
+  //   setBottomNavVisible(false);
+  //   return () => setBottomNavVisible(true);
+  // }, [setBottomNavVisible]);
+
+  useEffect(() => {
+    if (inputRef.current) inputRef.current.focus();
+  }, []);
+
+  const searchUsers = async (value) => {
+    setQuery(value);
+    sessionStorage.setItem('search_query', value);
+
+    if (!value) {
+      setResults([]);
+      sessionStorage.removeItem('search_results');
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('id, username, real_name, bio, avatar, about_me')
+      .or(`username.ilike.%${value}%,real_name.ilike.%${value}%,bio.ilike.%${value}%,about_me.ilike.%${value}%`);
+
+    if (!error) {
+      setResults(data);
+      sessionStorage.setItem('search_results', JSON.stringify(data));
+    }
+  };
+
+  useEffect(() => {
+    const savedQuery = sessionStorage.getItem('search_query');
+    const savedResults = sessionStorage.getItem('search_results');
+  
+    if (savedQuery) setQuery(savedQuery);
+    if (savedResults) setResults(JSON.parse(savedResults));
+  }, []);
+  
 
   
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      if (!session || !session.user) {
-        navigate("/register");
-        return;
-      }
-
-      // Проверка, есть ли профиль
-      const { data: profile, error } = await supabase
-        .from("profiles")
-        .select("id")
-        .eq("id", session.user.id)
-        .single();
-
-      if (error || !profile) {
-        navigate("/register");
-      } else {
-        setLoading(false);
-      }
-    };
-
-    checkAuth();
-  }, [navigate]);
-
-  if (loading) return <div className="loading-bitch-hm">Загрузка...</div>;
-
   return (
-    <div className="container-hm">
-      <div className="main-hm">
-        <div className="search-bar-hm" onClick={() => navigate('/search')}>
-          <FiSearch size={18} className="search-icon-hm" />
-          <span className="search-text-hm">Поиск человечности</span>
+    <div className="search-page-searchtab">
+      <div className="search-bar-searchtab">
+        <input 
+          ref={inputRef}
+          className="search-input-searchtab"
+          placeholder="Поиск человечности"
+          value={query}
+          onChange={(e) => searchUsers(e.target.value)}
+        />
+        {/* <button
+          onClick={() => {
+            sessionStorage.removeItem('search_query');
+            sessionStorage.removeItem('search_results');
+          }}
+        className="search-cancel-searchtab">Cancel</button> */}
+
+        {query && (
+          <button 
+            className="clear-button-searchtab"
+            onClick={() => {
+              setQuery('');
+              setResults([]);
+              sessionStorage.removeItem('search_query');
+              sessionStorage.removeItem('search_results');
+              inputRef.current?.focus(); // сразу вернуть фокус в поле
+            }}
+        >
+          <div className='text-searchbar-blbl-container'>
+            <p className='text-searchbar-blbl'>Результаты поиска сверху!</p>
+          </div>
+          
+          <FaTimes size={16} />
+        </button>
+        
+        )}
+      </div>
+
+      <div className='icon-bars-topbar-searchtab'>
+        {/* <button className='bars-icon-searchtab'>
+          <FaBarsStaggered size={18}/> 
+        </button> */}
+
+        <button className='chat-icon-searchtab'
+        onClick={() => navigate('/about')}>
+          <FaInfo size={18}/>
+        </button>
         </div>
+
+
+        {query.trim() === '' && (
+          <div className='card-containerr'>
         <div className="card-hm">
           <h2 className="card-title-hm">Платформа где доступны все люди мира!</h2>
           <p className="card-subtitle-hm">Начните использовать поиск чтобы найти доступ к тем, кто понимает.</p>
         </div>
-        <p className="founder-link-hm">Страница основателя @founderNermes</p>
-        <p className="founder-link2-hm">Для улучшений!</p>
-      </div>
+        </div>
+      )}
+      <ul className="search-results-searchtab">
+        {results.map((user) => (
+          <li key={user.id} 
+            onClick={() => navigate('/profile/' + user.id)}
+          className="search-result-item-searchtab">
+            <img src={user.avatar} alt="avatar" className="avatar-searchtab" />
+            <div className="user-details-searchtab">
+              <span className="username-searchtab">{user.real_name}</span>
+              <span className="bio-searchtab">{user.bio}</span>
+            </div>
+            {/* <button className="close-btn-searchtab">&times;</button> */}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

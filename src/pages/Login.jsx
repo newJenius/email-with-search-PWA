@@ -77,7 +77,7 @@ export default function Login() {
               .eq('id', user.id);
           }
       }
-      navigate('/'); // или '/profile'
+      navigate('/profile'); // или '/profile'
     }
   };
   

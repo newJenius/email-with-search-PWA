@@ -74,13 +74,19 @@
     opacity: 0.6;
     padding-left: 4px;
   }
+
+  .card-containerr{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
   
   .card-hm {
     background-color: #1b1b1b;
     border-radius: 8px;
-    width: 95vw;
-    padding: 20px 0px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    margin: 20px;
+    padding: 20px 12px;
     text-align: center;
   }
   

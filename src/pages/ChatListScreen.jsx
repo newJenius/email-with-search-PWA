@@ -74,6 +74,27 @@ export default function ChatListScreen() {
   
     fetchChats();
   }, []);
+
+  const handleClaim = async () => {
+    setClaiming(true);
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+  
+    const { error: updateError } = await supabase.rpc('claim_daily_reward', {
+      user_id_input: user.id
+    });
+  
+    if (updateError) {
+      alert("Ошибка при начислении монет");
+      console.error(updateError);
+      setClaiming(false);
+      return;
+    }
+  
+    alert("Вы получили 25 монет!");
+    setClaimAvailable(false);
+    setClaiming(false);
+  };
   
 
   return (
@@ -99,8 +120,8 @@ export default function ChatListScreen() {
 
       <div className='balance-btn-clst'>
         <p className='balance-text-clst'>Доступов: {balance ?? '...'}</p>
-        <p className='balance-text-clst'>Тратьте доступы с умом они конечны!</p>
-        <button className='buy-button-clst' onClick={() => navigate('/invite')}>Пригласить</button>
+        <p className='balance-text1-clst'>Тратьте доступы с умом они конечны!</p>
+        <button className='buy-button-clst' onClick={() => navigate('/invite')}>+Доступ</button>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
+import '../styless/InviteModal.css'
 
 export default function InviteModal({ onClose }) {
   const [username, setUsername] = useState('');
@@ -96,27 +97,30 @@ export default function InviteModal({ onClose }) {
 
   return (
     
-    <div style={{
-      background: 'black',
-      height: '100vh',
-      padding: '16px',
-      zIndex: 1000
-    }}>
+    <div className='invitemodal-container-im'>
       
       <h1>Работы еще ведутся!!!</h1>
-      <h3>Пригласи друга</h3>
+      {/*<h3>Пригласи друга</h3>
       <p>Скопируй ссылку и получи бонус:</p>
       <input value={link} readOnly style={{ width: '100%' }} />
       <button onClick={copy}>Скопировать</button>
-      <button onClick={onClose}>Закрыть</button>
+      <button onClick={onClose}>Закрыть</button> */}
+
+        <h2>Еще ведутся работы!!!</h2>
+
+        <h2>Ежедневная награда</h2>
 
       {claimAvailable ? (
         <button onClick={handleClaim} disabled={claiming}>
-          {claiming ? "Загрузка..." : "Получить 25 монет"}
+          {claiming ? "Загрузка..." : "Получить 25 доступов"}
         </button>
       ) : (
-        <p>Бонус уже получен сегодня</p>
+         <p>Бонус уже получен сегодня</p>
       )}
+
+      <h2>Задания (в будущем)</h2>
+      <p>Заполнить профиль</p>
+      <p>пригласить друзей. за каждого 50 доступов</p>
 
     </div>
   );

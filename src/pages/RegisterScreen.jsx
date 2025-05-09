@@ -81,10 +81,10 @@ export default function RegisterScreen() {
       return;
     }
 
-    if (!emailApproved) {
-      alert('Этот email не одобрен для регистрации.');
-      return;
-    }
+    // if (!emailApproved) {
+    //   alert('Этот email не одобрен для регистрации.');
+    //   return;
+    // }
 
     // const { data: existingUser, error: usernameError } = await supabase
     //   .from('public_user_emails')
@@ -196,17 +196,17 @@ export default function RegisterScreen() {
     return <p className="register-container-reg">Проверка доступа...</p>;
   }
 
-  if (!emailApproved) {
-    return (
-      <div className="register-container-regg">
-        <h1 className='text-error-regg'>Ошибка</h1>
-        <p className='text-error-regg'>Регистрация доступна только по приглашению. Убедитесь, что вы используете правильную ссылку.</p>
-        <button className="havee-acc-btn-reg" onClick={() => navigate('/login')}>
-          <p>Уже есть аккаунт</p>
-          </button>
-      </div>
-    );
-  }
+  // if (!emailApproved) {
+  //   return (
+  //     <div className="register-container-regg">
+  //       <h1 className='text-error-regg'>Ошибка</h1>
+  //       <p className='text-error-regg'>Регистрация доступна только по приглашению. Убедитесь, что вы используете правильную ссылку.</p>
+  //       <button className="havee-acc-btn-reg" onClick={() => navigate('/login')}>
+  //         <p>Уже есть аккаунт</p>
+  //         </button>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="register-container-reg">

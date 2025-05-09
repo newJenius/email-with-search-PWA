@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import '../styless/AboutScreen.css';
+import { useNavigate } from 'react-router-dom';
+import { useUI } from '../components/uiContext';
 
 const questions = [
   {
@@ -30,10 +32,19 @@ const questions = [
 
 export default function AboutScreen() {
   const [openIndex, setOpenIndex] = useState(null);
+  const navigate = useNavigate();
+  // const { setBottomNavVisible } = useUI();
+
+  // useEffect(() => {
+  //   setBottomNavVisible(false);
+  //   return () => setBottomNavVisible(true);
+  // }, [setBottomNavVisible]);
 
   const toggle = (index) => {
     setOpenIndex(index === openIndex ? null : index);
   };
+
+  
 
   return (
     <div className="faq-container-faqqq">
@@ -52,6 +63,8 @@ export default function AboutScreen() {
           )}
         </div>
       ))}
+
+      {/* <button className='back-button-faqq' onClick={() => navigate('/')}>Назад</button> */}
     </div>
   );
 }
