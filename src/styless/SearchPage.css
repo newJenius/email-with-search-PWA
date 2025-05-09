@@ -133,18 +133,18 @@
 
   .text-searchbar-blbl-container{
     position: fixed;
-    width: 100vw;
-    height: 100vh;
-    margin-right: 41vh;
+    background-color: #3b82f6;
+    display: flex;
     padding-top: 2px;
-    margin-top: 85vh;
+    z-index: 1001;
   }
 
   .text-searchbar-blbl{
     color: rgb(61, 61, 247);
     background-color: #0f0f0f;
-    padding: 6px 20px;
+    padding: 6px 0px;
     font-size: 13px;
+    z-index: 101;
   }
   
   

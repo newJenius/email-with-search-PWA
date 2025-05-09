@@ -87,10 +87,6 @@ export default function SearchPage() {
               inputRef.current?.focus(); // сразу вернуть фокус в поле
             }}
         >
-          <div className='text-searchbar-blbl-container'>
-            <p className='text-searchbar-blbl'>Результаты поиска сверху!</p>
-          </div>
-          
           <FaTimes size={16} />
         </button>
         
