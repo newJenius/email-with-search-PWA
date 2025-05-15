@@ -9,7 +9,8 @@
 .chat-header-cs {
   display: flex;
   align-items: center;
-  position: absolute;
+  background-color: #22c55e;
+  position: fixed;
   font-size: 2px;
   width: 100vw;
   border-bottom: 0.5px solid #2c2c2c;
@@ -96,7 +97,7 @@
 }
 
 .chat-input-cs {
-  position: absolute;
+  position: fixed;
   padding: 0px;
   bottom: 0;
   left: 0;
@@ -151,7 +152,7 @@
 }
 
 .icon-button-cs {
-  background: none;
+  background: white;
   border: none;
   color: #9ca3af;
   cursor: pointer;

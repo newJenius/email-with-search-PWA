@@ -367,18 +367,18 @@ export default function ChatScreen() {
           <ArrowLeft size={18} />
         </button>
 
-        <button className='header-button-cs' onClick={() => navigate('/profile/' + profile.id)}>
-          {profile.avatar ? (
-            <img src={profile.avatar} alt="avatar" className="avatar-cs" />
+        {/* <button className='header-button-cs' onClick={() => navigate('/profile/' + profile.id)}> */}
+          {/* {profile.avatar ? (
+            // <img src={profile.avatar} alt="avatar" className="avatar-cs" />
           ) : (
             <CircleUserRound size={32} className="avatar-placeholder-cs" />
-          )}
+          )} */}
 
-          <div className="header-info-cs">
-            <div className="username-cs">{profile.real_name}</div>
+          {/* <div className="header-info-cs"> */}
+            {/* <div className="username-cs">{profile.real_name}</div> */}
             {/* <div className="rating-cs">4.4/5 quality of answers</div> */}
-          </div>
-        </button>
+          {/* </div> */}
+        {/* </button> */}
       </div>
 
       <div className="chat-messages-cs" ref={flatListRef}>

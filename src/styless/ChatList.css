@@ -83,9 +83,10 @@
 }
 
 .header-clst{
-  padding-left: 10px;
+  margin-left: 20px;
+  border-bottom: 0.2px solid rgb(39, 39, 39);
   font-size: 32px;
-  margin-bottom: 2px;
+  margin-bottom: 8px;
 }
 
 .chat-info-clst {
@@ -93,10 +94,11 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin-left: 10px;
 }
 
 .chat-name-clst {
-  font-size: 14px;
+  font-size: 16px;
   padding-bottom: 0px;
   color: #ffffff;
   white-space: nowrap;

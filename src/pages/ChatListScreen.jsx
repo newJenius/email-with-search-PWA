@@ -109,7 +109,7 @@ export default function ChatListScreen() {
           }}
         > 
           {chat.isUnread && <div className="unread-dot-clst" />}
-          <img src={chat.avatar} alt={chat.name} className="avatar-clst" />
+          {/* <img src={chat.avatar} alt={chat.name} className="avatar-clst" /> */}
           <div className="chat-info-clst">
             <div className="chat-name-clst">{chat.name}</div>
             <div className="chat-preview-clst">{chat.lastMessage}</div>
