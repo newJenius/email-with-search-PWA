@@ -9,7 +9,7 @@
 .chat-header-cs {
   display: flex;
   align-items: center;
-  background-color: #22c55e;
+  background-color: #000000;
   position: fixed;
   font-size: 2px;
   width: 100vw;
@@ -54,13 +54,14 @@
 
 .chat-messages-cs {
   flex: 1;
-  overflow-y: auto;
-  padding: 100vh 100px 100px 00px;
   display: flex;
+  overflow-y: auto;
   flex-direction: column;
   gap: 4px;
-  bottom: 0;
-  padding: 8vh 0px;
+  margin-left: 2px;
+  margin-right: 6px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .chat-bubble-cs {
@@ -70,20 +71,21 @@
   white-space: pre-wrap;
   font-size: 13px;
   line-height: 1.3;               /* уменьшено с 1.4 */
-  margin-bottom: 3px;
+  margin-bottom: 2px;
+  padding-top: 40px;
 }
 
 .my-message-cs {
   background-color: rgb(22, 22, 22);
-  border: 0.2px solid rgb(88, 88, 88);
   color: #fff;
   display: flex;
+  border-radius: 14px;
   align-self: flex-start;
 }
 
 .their-message-cs {
   background-color: #303030;
-  border: 0.2px solid rgb(83, 83, 83);
+  border-radius: 14px;
   color: #fff;
   align-self: flex-start;
 }
@@ -102,7 +104,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #23e644;
+  background-color: #000000;
   width: 100vw;
   z-index: 100;
 }
@@ -110,6 +112,9 @@
 .preview-confirm-cs {
   display: flex;
   justify-content: space-between;
+  background-color: #1d1d1d;
+  padding-top: 20px;
+  padding-bottom: 20px;
   align-items: center;
   gap: 5px;
   width: 100vw;
@@ -123,6 +128,7 @@
 .send-button-cs {
   color: #22c55e;
   cursor: pointer;
+  margin-right: 6px;
 }
 
 .input-row-cs {
@@ -142,7 +148,7 @@
   resize: none;
   overflow: hidden;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 16px;
   padding-left: 14px;
   border: none;
   outline: none;
@@ -152,7 +158,7 @@
 }
 
 .icon-button-cs {
-  background: white;
+  background: rgb(0, 0, 0);
   border: none;
   color: #9ca3af;
   cursor: pointer;
@@ -318,19 +324,68 @@
   height: 30px; /* или меньше — по вкусу */
   background-color: #1d1d1d;
   padding-top: 4px;
-  padding-bottom: 4px;
+  border-radius: 8px;
+  padding-bottom: 20px;
 }
 
 .input-wrapper-cs.collapsed .input-field-cs {
   min-height: 10px;
   max-height: 20px;
-  font-size: 13px;
+  font-size: 16px;
   color: #0f0f0f;
 }
 
 .input-wrapper-cs,
 .input-field-cs {
-  transition: all 0.3s ease;
+  transition: all 0.8s ease;
+}
+
+.input-field-cs,
+.preview-confirm-cs{
+  transition: all 0.5s ease;
+}
+
+.message-meta-cs {
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.message-avatar-cs {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 10px;
+  object-fit: cover;
+}
+
+.message-avatar-placeholder-cs {
+  color: #888;
+}
+
+.message-username-cs {
+  font-size: 14px;
+  font-weight: 500;
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 50px;
+  color: #ccc;
+}
+
+.message-watermark-cs{
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  opacity: 50%;
+  margin-top: 75px;
+  margin-left: 50px;
+  color: #ccc;
+  border-bottom: 1px solid rgb(85, 85, 85);
+  width: 80vw;
 }
 
 

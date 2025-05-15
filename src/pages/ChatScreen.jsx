@@ -34,6 +34,25 @@ export default function ChatScreen() {
   const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
   const [isFocused, setIsFocused] = useState(false);
   const textareaRef = useRef(null);
+  const [profilesMap, setProfilesMap] = useState({});
+
+  useEffect(() => {
+    const senderIds = [...new Set(messages.map(msg => msg.sender_id))];
+    const fetchProfiles = async () => {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('id, real_name, avatar')
+        .in('id', senderIds);
+
+      if (!error && data) {
+        const map = {};
+        data.forEach(p => map[p.id] = p);
+        setProfilesMap(map);
+      }
+    };
+    if (messages.length > 0) fetchProfiles();
+  }, [messages]);
+
 
   
 
@@ -386,16 +405,22 @@ export default function ChatScreen() {
           const isMyMessage = item.sender_id === senderId;
           const isTheirMessage = item.sender_id === id;
           return (
-            <div
-              key={item.id || index}
-              className={`message-wrapper-cs ${isMyMessage ? 'my-wrapper-cs' : 'their-wrapper-cs'}`}
-            >
+            <div className={`message-wrapper-cs ${isMyMessage ? 'my-wrapper-cs' : 'their-wrapper-cs'}`}>
+              <div className="message-meta-cs">
+                {profilesMap[item.sender_id]?.avatar ? (
+                  <img src={profilesMap[item.sender_id].avatar} alt="avatar" className="message-avatar-cs" />
+                ) : (
+                  <CircleUserRound size={28} className="message-avatar-placeholder-cs" />
+                )}
+                <span className="message-username-cs">{profilesMap[item.sender_id]?.real_name || 'Неизвестный'}</span>
+                <p className='message-watermark-cs'>nermes.xyz</p>
+              </div>
+
               <div className={`chat-bubble-cs ${isMyMessage ? 'my-message-cs' : 'their-message-cs'}`}>
                 <div className="bubble-content-wrapper-cs">
                   <p>{item.content}</p>
                 </div>
               </div>
-
               {/* {isTheirMessage && (
                 // <div className="options-container-cs">
                 //   <button

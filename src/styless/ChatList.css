@@ -83,10 +83,15 @@
 }
 
 .header-clst{
-  margin-left: 20px;
+  margin-left: 0px;
+  padding-left: 20px;
   border-bottom: 0.2px solid rgb(39, 39, 39);
+  position: fixed;
+  background-color: #22c55e;
+  width: 100vw;
   font-size: 32px;
-  margin-bottom: 8px;
+  padding-bottom: 6px;
+  margin-top: 0px;
 }
 
 .chat-info-clst {
