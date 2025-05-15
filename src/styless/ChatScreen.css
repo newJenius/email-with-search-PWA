@@ -81,8 +81,8 @@
 }
 
 .their-message-cs {
-  background-color: #414141;
-  border: 0.2px solid rgb(141, 141, 141);
+  background-color: #303030;
+  border: 0.2px solid rgb(83, 83, 83);
   color: #fff;
   align-self: flex-start;
 }
@@ -96,10 +96,13 @@
 }
 
 .chat-input-cs {
-  position: sticky;
+  position: absolute;
   padding: 0px;
   bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #23e644;
+  width: 100vw;
   z-index: 100;
 }
 
@@ -133,15 +136,18 @@
 }
 
 .input-field-cs {
-  width: 100vw;
-  background-color: #2f2f2f;
-  margin-bottom: 6px;
-  border-radius: 8px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding: 8px 14px;
+  width: 100%;
+  background: transparent;
+  resize: none;
+  overflow: hidden;
+  color: #ffffff;
   font-size: 15px;
-  color: #68eb11
+  padding-left: 14px;
+  border: none;
+  outline: none;
+  line-height: 1.4;
+  min-height: 60px;
+  max-height: 160px; /* ограничение роста */
 }
 
 .icon-button-cs {
@@ -269,4 +275,61 @@
   transition: color 0.2s ease;
   margin-left: -20px;
 }
+
+.input-wrapper-cs {
+  position: relative;
+  width: 100vw;
+  background-color: #1d1d1d;
+  padding: 8px 0px 55px 0px;
+  border-radius: 0px;
+  transition: all 0.6s ease;
+  display: flex;
+  align-items: center;
+  z-index: 200;
+}
+
+.input-wrapper-cs.expanded {
+  background-color: #1e1e1e;
+  height: 10vh;
+}
+
+.send-inside-input-cs {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: none;
+  border: none;
+  color: #cfd0d1;
+  cursor: pointer;
+}
+
+.attach-button-cs {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: none;
+  border: none;
+  color: #cfd0d1;
+  cursor: pointer;
+}
+
+.input-wrapper-cs.collapsed {
+  height: 30px; /* или меньше — по вкусу */
+  background-color: #1d1d1d;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.input-wrapper-cs.collapsed .input-field-cs {
+  min-height: 10px;
+  max-height: 20px;
+  font-size: 13px;
+  color: #0f0f0f;
+}
+
+.input-wrapper-cs,
+.input-field-cs {
+  transition: all 0.3s ease;
+}
+
 

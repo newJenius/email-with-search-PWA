@@ -63,7 +63,7 @@ function App() {
       <BrowserRouter>
       
         <div className="min-h-screen pb-16 bg-black">
-          
+      
           <Routes>
             <Route path="/invitereg" element={<InviteRegScreen />} />
             <Route path="/" element={<Home />} />
@@ -80,6 +80,7 @@ function App() {
             <Route path="/confirm" element={<Confirm />} />
             
           </Routes>
+        
           
         </div>
         {userId && <MessageListener userId={userId}/>}

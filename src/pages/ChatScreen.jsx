@@ -12,6 +12,8 @@ import {
 } from 'lucide-react';
 import { useUI } from '../components/uiContext';
 import "../styless/loadingScreen.css";
+import { FiPaperclip } from "react-icons/fi";
+
 
 
 export default function ChatScreen() {
@@ -30,6 +32,9 @@ export default function ChatScreen() {
   const [isInitiator, setIsInitiator] = useState(true);
   const [selectedMessageId, setSelectedMessageId] = useState(null);
   const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+  const [isFocused, setIsFocused] = useState(false);
+  const textareaRef = useRef(null);
+
   
 
 
@@ -290,6 +295,7 @@ export default function ChatScreen() {
   };
   
   
+  
 
   useEffect(() => {
     if (!senderId || !id) return;
@@ -429,18 +435,34 @@ export default function ChatScreen() {
             </button>
           </div>
         ) : (
-          <div className="input-row-cs">
-            <input
+          <div className={`input-wrapper-cs ${isFocused || message ? 'expanded' : 'collapsed'}`}>
+            <textarea
+              ref={textareaRef}
               className="input-field-cs"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              rows={3}
               placeholder="Напишите сообщение"
             />
-            <button onClick={handleSendMessage} disabled={loading} className="icon-button2-cs">
-              {loading ? '...' : <SendHorizonal size={24} />}
-            </button>
- 
+  
+            { (isFocused || message) && (
+              <>
+                <button 
+                  onClick={handleSendMessage} 
+                  disabled={loading} 
+                  className="send-inside-input-cs"
+                >
+                  {loading ? '...' : <SendHorizonal size={20} />}
+                </button>
+                <button className="attach-button-cs">
+                  <FiPaperclip size={20} />
+                </button>
+              </>
+            )}
           </div>
+
         )}
       </div>
       </div>
