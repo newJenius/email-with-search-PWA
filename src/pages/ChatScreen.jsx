@@ -29,6 +29,8 @@ export default function ChatScreen() {
   const {setBottomNavVisible} = useUI();
   const [isInitiator, setIsInitiator] = useState(true);
   const [selectedMessageId, setSelectedMessageId] = useState(null);
+  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+  
 
 
   useEffect(() => {
@@ -110,10 +112,30 @@ export default function ChatScreen() {
   
 
   useEffect(() => {
-    if (flatListRef.current?.scrollHeight) {
-      flatListRef.current.scrollTop = flatListRef.current.scrollHeight;
+    const ref = flatListRef.current;
+    if (!ref) return;
+  
+    const isAtBottom = Math.abs(ref.scrollHeight - ref.scrollTop - ref.clientHeight) < 50;
+  
+    if (isAtBottom) {
+      const timeout = setTimeout(() => {
+        ref.scrollTop = ref.scrollHeight;
+      }, 100);
+  
+      return () => clearTimeout(timeout);
     }
   }, [messages]);
+  
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportHeight(window.innerHeight);
+    };
+  
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
   
 
   const handleSendMessage = () => {
@@ -327,6 +349,7 @@ export default function ChatScreen() {
   
     await fetchMessages();
   };
+
   
 
   if (!profile) return <div className='loading-container-maain'></div>;
@@ -407,7 +430,7 @@ export default function ChatScreen() {
           </div>
         ) : (
           <div className="input-row-cs">
-            <textarea
+            <input
               className="input-field-cs"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
