@@ -100,6 +100,7 @@ export default function ChatListScreen() {
   return (
     <div className="chat-list-container-clst">
       <h2 className='header-clst'>Люди</h2>
+      <div className='chat-margin-top-clst'>
       {chatList.map((chat) => (
         <div
           key={chat.id}
@@ -117,6 +118,7 @@ export default function ChatListScreen() {
           
         </div>
       ))}
+      </div>
 
       <div className='balance-btn-clst'>
         <p className='balance-text-clst'>Доступов: {balance ?? '...'}</p>

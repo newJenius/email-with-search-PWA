@@ -60,22 +60,47 @@ export default function ProfileModal() {
     <div className="profile-modal-pf-modal">
       <button className="close-btn-pf-modal" onClick={() => navigate(-1)}>&times;</button>
 
+      <div className='avatar-container-pf-modal'>
       <div className="avatar-box-pf-modal">
         {profile.avatar ? (
           <img src={profile.avatar} alt="Avatar" className="avatar-pf-modal" />
+          
         ) : (
           <div className="avatar placeholder-pf-modal" />
         )}
+         <h2 className='real_name-pf-modal'>{profile.real_name}</h2>
+         <p className='bio-pf-modal'>{profile.bio || 'No bio yet.'}</p>
+      </div>
+      </div>
+      
+      <div className='otkrit-k-pf-podal'>
+        <p className='otkrit-k-text-pf-modal'>Открыт к...</p>
+        <p className='otkrit-k-subtext-pf-modal'>Готов отвечать на техвопросы и обсуждать коллаборации.</p>
       </div>
 
-      <h2 className='real_name-pf-modal'>{profile.real_name}</h2>
-      <p className='bio-pf-modal'>{profile.bio || 'No bio yet.'}</p>
+      <div className='format-sv-pf-modal'>
+        <p className='format-sv-text-pf-modal'>Формат связи</p>
+        <p className='format-sv-subtext-pf-modal'>Предпочитаю краткие и конкретные сообщения. Отвечаю в течение 2 дней.</p>
+      </div>
+
+      <div className='hashtags-pf-modal'>
+        <p className='hashtags-text-pf-modal'>Хэштеги</p>
+        <p className='hashtags-subtext-pf-modal'>#csgoawp#3k#csgohighlights#csgotips#csgoedit#video
+          #freecsgoknife#steelseries#csclips
+          #stream#shroud#steam#faceit#play</p>
+      </div>
+
+      <div className='comments-pf-modal'>
+        <p className='comments-text-pf-modal'>Посмотреть отзывы других людей</p>
+      </div>
+     
+      
       <p className="username-pf-modal">@{profile.username}</p>
       <div className='border-bottom-pf-modal'></div>
 
-      <div className="about_me-box-pf-modal">
+      {/* <div className="about_me-box-pf-modal">
         <p>{profile.about_me || 'Пользователь не ввел данные.'}</p>
-      </div>
+      </div> */}
 
       <div className='message-btn-field-pd-modal'>
           <button className="message-btn-pf-modal" onClick={handleMessagePress}>

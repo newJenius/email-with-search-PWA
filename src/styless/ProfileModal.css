@@ -1,6 +1,6 @@
 .profile-modal-pf-modal {
     width: 100vw;
-    height: auto;
+    height: 100vh;
     background-color: rgb(0, 0, 0);
 
   }
@@ -12,18 +12,100 @@
     background: none;
     border: none;
     font-size: 24px;
-    color: #afafaf;
+    color: #0044ff;
     cursor: pointer;
   }
   
   .avatar-box-pf-modal {
-    margin-bottom: 1px;
+    margin-bottom: 2px;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    width: 100vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #191919;
+  }
+
+  .otkrit-k-pf-podal{
+    background-color: #191919;
+    position: absolute;
+  }
+
+  .otkrit-k-text-pf-modal{
+    font-weight: 780;
+    margin-left: 10px;
+  }
+
+  .otkrit-k-subtext-pf-modal{
+    margin-left: 10px;
+    margin-top: -15px;
+    font-style: italic;
+  }
+
+  .format-sv-text-pf-modal{
+    font-weight: 780;
+    margin-left: 10px;
+  }
+
+  .format-sv-subtext-pf-modal{
+    margin-left: 10px;
+    margin-top: -15px;
+    font-style: italic;
+  }
+
+  .format-sv-pf-modal{
+    background-color: #191919;
+    position: absolute;
+    margin-top: 12vh;
+  }
+
+  .hashtags-pf-modal{
+    background-color: #191919;
+    position: absolute;
+    margin-top: 24vh;
+  }
+
+  .hashtags-text-pf-modal{
+    margin-left: 10px;
+    font-weight: 780;
+  }
+
+  .hashtags-subtext-pf-modal{
+    margin-left: 10px;
+    margin-top: -15px;
+    display: flex;
+    flex: 1;
+  }
+
+  .comments-pf-modal{
+    background-color: #191919;
+    position: absolute;
+    margin-top: 40vh;
+    width: 100vw;
+  }
+
+  .comments-text-pf-modal{
+    color: #0044ff;
+    text-align: center;
+  }
+
+  .avatar-container-pf-modal{
+    background-color: rgb(0, 0, 0);
+    padding-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-around;
+    padding-bottom: 50px;
   }
   
   .avatar-pf-modal {
-    width: 100vw;
-    height: 40vh;
-    border-radius: 3%;
+    margin-left: 10px;
+    width: 80px;
+    aspect-ratio: 1/1;
+    height: 80px;
+    border-radius: 50%;
     object-fit: cover;
     background: #000000;
   }
@@ -33,7 +115,7 @@
   }
   
   .username-pf-modal {
-    color: #777;
+    color: #ca1f1f;
     font-size: 12px;
     margin-top: 2px;
     padding-left: 14px;
@@ -48,19 +130,24 @@
   }
 
   .real_name-pf-modal {
-    color: #ffffff;
-    font-size: 15px;
+    color: #e01b1b;
+    font-size: 16px;
     margin-top: 2px;
     margin-bottom: 0px;
-    padding-left: 14px;
+    padding-left: 100px;
+    position: absolute;
+    display: flex;
+    flex: 1;
   }
 
   .bio-pf-modal {
-    color: #aaaaaa;
-    font-size: 12px;
-    margin-top: -3px;
-    margin-bottom: 0px;
-    padding-left: 14px;
+    color: #ce1515;
+    font-size: 14px;
+    display: flex;
+    position: absolute;
+    padding-left: 100px;
+    padding-top: 12px;
+    flex: 1;
   }
   
   .message-btn-pf-modal {
@@ -82,6 +169,7 @@
     right: 0;
     background-color: #000000;
     padding: 3px 0;
+    padding-bottom: 14px;
     z-index: 200;
     margin-bottom: 0px;
     height: 50px;
