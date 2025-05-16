@@ -124,7 +124,7 @@ export default function SearchPage() {
           <li key={user.id} 
             onClick={() => navigate('/profile/' + user.id)}
           className="search-result-item-searchtab">
-            <img src={user.avatar} alt="avatar" className="avatar-searchtab" />
+            {/* <img src={user.avatar} alt="avatar" className="avatar-searchtab" /> */}
             <div className="user-details-searchtab">
               <span className="username-searchtab">{user.real_name}</span>
               <span className="bio-searchtab">{user.bio}</span>

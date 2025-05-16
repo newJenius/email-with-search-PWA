@@ -57,13 +57,13 @@
   .format-sv-pf-modal{
     background-color: #191919;
     position: absolute;
-    margin-top: 12vh;
+    margin-top: 13vh;
   }
 
   .hashtags-pf-modal{
     background-color: #191919;
     position: absolute;
-    margin-top: 24vh;
+    margin-top: 26vh;
   }
 
   .hashtags-text-pf-modal{
@@ -81,7 +81,7 @@
   .comments-pf-modal{
     background-color: #191919;
     position: absolute;
-    margin-top: 40vh;
+    margin-top: 43vh;
     width: 100vw;
   }
 

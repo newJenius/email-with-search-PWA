@@ -85,8 +85,8 @@ export default function ProfileModal() {
 
       <div className='hashtags-pf-modal'>
         <p className='hashtags-text-pf-modal'>Хэштеги</p>
-        <p className='hashtags-subtext-pf-modal'>#csgoawp#3k#csgohighlights#csgotips#csgoedit#video
-          #freecsgoknife#steelseries#csclips
+        <p className='hashtags-subtext-pf-modal'>#csgoawp#3k#csgohighlights#csgotips#csgoedit
+          #video#freecsgoknife#steelseries#csclips
           #stream#shroud#steam#faceit#play</p>
       </div>
 
