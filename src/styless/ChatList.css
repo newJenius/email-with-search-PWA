@@ -81,6 +81,13 @@
 
 }
 
+.header-main-clst{
+  background-color: rgb(255, 81, 0);
+  padding-bottom: 0px;
+  position: fixed;
+  z-index: 1000;
+}
+
 .header-clst{
   margin-left: 0px;
   padding-left: 20px;

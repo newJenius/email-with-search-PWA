@@ -4,6 +4,8 @@ import { supabase } from '../lib/supabaseClient';
 import '../styless/ChatList.css';
 import { Asterisk } from 'lucide-react';
 import InviteModal from './InviteModal';
+import '../styless/SearchPage.css';
+import '../styless/Home.css';
 
 export default function ChatListScreen() {
   const [chatList, setChatList] = useState([]);
@@ -99,7 +101,10 @@ export default function ChatListScreen() {
 
   return (
     <div className="chat-list-container-clst">
-      <h2 className='header-clst'>Люди</h2>
+      <div className="header-main-clst">
+        <h2 className='header-clst'>Люди</h2>
+      </div>
+      
       <div className='chat-margin-top-clst'>
       {chatList.map((chat) => (
         <div
