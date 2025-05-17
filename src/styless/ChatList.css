@@ -106,7 +106,8 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  margin-left: 10px;
+  margin-left: 14px;
+  margin-right: 10px;
 }
 
 .chat-margin-top-clst{

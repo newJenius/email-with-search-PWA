@@ -13,6 +13,8 @@ import {
 import { useUI } from '../components/uiContext';
 import "../styless/loadingScreen.css";
 import { FiPaperclip } from "react-icons/fi";
+import { LiaCircleSolid } from "react-icons/lia";
+
 
 
 
@@ -406,17 +408,20 @@ export default function ChatScreen() {
           const isTheirMessage = item.sender_id === id;
           return (
             <div className={`message-wrapper-cs ${isMyMessage ? 'my-wrapper-cs' : 'their-wrapper-cs'}`}>
-              <div className="message-meta-cs">
-                {profilesMap[item.sender_id]?.avatar ? (
-                  <img src={profilesMap[item.sender_id].avatar} alt="avatar" className="message-avatar-cs" />
-                ) : (
-                  <CircleUserRound size={28} className="message-avatar-placeholder-cs" />
-                )}
-                <span className="message-username-cs">{profilesMap[item.sender_id]?.real_name || 'Неизвестный'}</span>
-                <p className='message-watermark-cs'>nermes.xyz</p>
-              </div>
-
               <div className={`chat-bubble-cs ${isMyMessage ? 'my-message-cs' : 'their-message-cs'}`}>
+                
+                <div className="message-meta-cs">
+                  {profilesMap[item.sender_id]?.avatar ? (
+                    <img src={profilesMap[item.sender_id].avatar} alt="avatar" className="message-avatar-cs" />
+                  ) : (
+                    <LiaCircleSolid color='rgb(22,22,22)' size={28} className="message-avatar-placeholder-cs" />
+                  )}
+                  <div className="message-header-cs">
+                    <span className="message-username-cs">{profilesMap[item.sender_id]?.real_name || 'Неизвестный'}</span>
+                    <p className="message-watermark-cs">nermes.xyz</p>
+                  </div>
+                </div>
+
                 <div className="bubble-content-wrapper-cs">
                   <p>{item.content}</p>
                 </div>

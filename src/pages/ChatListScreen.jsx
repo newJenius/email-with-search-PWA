@@ -102,7 +102,7 @@ export default function ChatListScreen() {
   return (
     <div className="chat-list-container-clst">
       <div className="header-main-clst">
-        <h2 className='header-clst'>Люди</h2>
+        <h2 className='header-clst'>Связи</h2>
       </div>
       
       <div className='chat-margin-top-clst'>
