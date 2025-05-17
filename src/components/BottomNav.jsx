@@ -5,6 +5,12 @@ import { useUI } from "./uiContext.jsx";
 import { Badge } from 'lucide-react';
 import { LuMail } from "react-icons/lu";
 import { IoIosSearch } from "react-icons/io";
+import { FiInbox } from "react-icons/fi";
+import { CiMail } from "react-icons/ci";
+import { CiUser } from "react-icons/ci";
+
+
+
 
 
 
@@ -16,10 +22,10 @@ export default function BottomNav() {
   if(!isBottomNavVisible) return null;
 
   const tabs = [
-    { path: "/", icon: <IoIosSearch size={28} /> },
-    { path: "/chat", icon: <LuMail size={28}/> },
+    { path: "/chat", icon: <CiMail size={28}/> },
+    { path: "/", icon: <IoIosSearch size={26} /> },
     // { path: "/about", icon: <IoIosInformationCircleOutline size={32} />},
-    { path: "/profile", icon: <AiOutlineUser size={28} />},
+    { path: "/profile", icon: <CiUser size={28} />},
   ];
 
   return (

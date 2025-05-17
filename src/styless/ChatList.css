@@ -44,6 +44,7 @@
   position: fixed;
   height: 50px;
   margin-bottom: 6vh;
+  padding-bottom: 10px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -110,7 +111,7 @@
 
 .chat-margin-top-clst{
   background-color: #000000;
-  margin-top: 7vh;
+  margin-top: 8.2vh;
 }
 
 .chat-name-clst {
