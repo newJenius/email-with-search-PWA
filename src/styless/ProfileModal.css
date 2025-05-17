@@ -163,7 +163,7 @@
     background-color: #20519e;
     padding: 12px 0px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     width:96vw;
     z-index: 200;
     font-weight: bold;
@@ -181,7 +181,7 @@
     padding-bottom: 14px;
     z-index: 200;
     margin-bottom: 0px;
-    height: 50px;
+    height: 85px;
     padding-left: 8px;
     display: flex;
     flex-direction: column;

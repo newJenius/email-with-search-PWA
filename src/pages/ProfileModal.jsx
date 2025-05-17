@@ -34,9 +34,9 @@ export default function ProfileModal() {
   };
 
   useEffect(() => {
-    setBottomNavVisible(false);
+    // setBottomNavVisible(false);
     fetchProfile();
-    return () => setBottomNavVisible(true);
+    // return () => setBottomNavVisible(true);
   }, [id]);
 
   const handleMessagePress = async () => {
