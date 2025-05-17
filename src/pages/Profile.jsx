@@ -12,6 +12,9 @@ export default function Profile() {
     price_per_message: "",
     about_me: "",
     avatar: "",
+    sut_zaprosa: "",
+    hashtags_user: "",
+    format_svyazi: "",
   });
   const [avatarFile, setAvatarFile] = useState(null);
 
@@ -88,7 +91,7 @@ export default function Profile() {
     if (
       !profile.real_name.trim() ||
       !profile.bio.trim() ||
-      !profile.about_me.trim() ||
+      !profile.sut_zaprosa.trim() ||
       !profile.price_per_message.toString().trim()
     ) {
       alert("Пожалуйста, заполните все поля профиля.");
@@ -123,12 +126,13 @@ export default function Profile() {
       </div>
 
       <input
+        className="input-image-file-prof"
         type="file"
         accept="image/*"
         onChange={(e) => setAvatarFile(e.target.files?.[0] || null)}
       />
-      <button onClick={handleAvatarUpload}>Сменить фото профиля</button>
-      <p className="wiki-style-prof">*Заполняйте как будто это ваша Вики страница.</p>
+      <button className='change-img-btn-prof' onClick={handleAvatarUpload}>Сменить фото профиля</button>
+      <p className="wiki-style-prof">*Ваш профиль - не анкета, не биография. Это условия связи с вами!</p>
 
       <Field
         label="Имя"
@@ -151,12 +155,32 @@ export default function Profile() {
         }
       />
       <div className="form-field-prof about-section">
-        <label className="field-label-prof">О себе</label>
+        <label className="field-label-prof">Суть запроса ко мне</label>
         <textarea
-          value={profile.about_me}
+          value={profile.sut_zaprosa}
           className="about-text-input-prof"
           placeholder="Пишите о том, что делает вас вами."
-          onChange={(e) => setProfile({ ...profile, about_me: e.target.value })}
+          onChange={(e) => setProfile({ ...profile, sut_zaprosa: e.target.value })}
+        />
+      </div>
+
+      <div className="form-field-prof about-section">
+        <label className="field-label-prof">Формат связи</label>
+        <textarea
+          value={profile.format_svyazi}
+          className="about-text-input-prof"
+          placeholder="Предпочитаю краткие и конкретные сообщения."
+          onChange={(e) => setProfile({ ...profile, format_svyazi: e.target.value })}
+        />
+      </div>
+
+      <div className="form-field-prof hashtags-section">
+        <label className="field-label-prof">Хэштеги</label>
+        <textarea
+          value={profile.hashtags_user}
+          className="hashtags-text-input-prof"
+          placeholder="Для поисковика."
+          onChange={(e) => setProfile({ ...profile, hashtags_user: e.target.value })}
         />
       </div>
 

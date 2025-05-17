@@ -8,10 +8,8 @@ import { IoIosSearch } from "react-icons/io";
 import { FiInbox } from "react-icons/fi";
 import { CiMail } from "react-icons/ci";
 import { CiUser } from "react-icons/ci";
-
-
-
-
+import { SlPaperPlane } from "react-icons/sl";
+import { HiOutlineUser } from "react-icons/hi2";
 
 
 export default function BottomNav() {
@@ -22,10 +20,10 @@ export default function BottomNav() {
   if(!isBottomNavVisible) return null;
 
   const tabs = [
-    { path: "/chat", icon: <CiMail size={28}/> },
-    { path: "/", icon: <IoIosSearch size={26} /> },
+    { path: "/chat", icon: <SlPaperPlane size={21}/> },
+    { path: "/", icon: <IoIosSearch size={28} /> },
     // { path: "/about", icon: <IoIosInformationCircleOutline size={32} />},
-    { path: "/profile", icon: <CiUser size={28} />},
+    { path: "/profile", icon: <HiOutlineUser size={26} />},
   ];
 
   return (
@@ -56,7 +54,7 @@ export default function BottomNav() {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              color: isActive ? "#0067ff" : "#888",
+              color: isActive ? "#fff" : "#888",
               textDecoration: "none",
               fontSize: "12px",
               gap: "3px",

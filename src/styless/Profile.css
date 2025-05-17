@@ -9,21 +9,34 @@
   
   .avatar-preview-prof {
     width: 100vw;
-    background-color: #222222;
+    background-color: #000000;
+    margin-top: 70px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    color: rgb(0, 0, 0);
+    align-items: flex-start;
+    color: rgb(0, 0, 0); 
     font-weight: bold;
     font-size: 1.25rem;
     border-radius: 0.5rem;
     overflow: hidden;
+
   }
   
   .avatar-image-prof {
-    height: 100%;
-    width: 100%;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
     object-fit:cover;
+  }
+
+  .input-image-file-prof{
+    background-color: #000000;
+    margin-left: 10px;
+  }
+
+  .change-img-btn-prof{
+    margin-left: 10px;
+    margin-right: 10px;
   }
   
   .form-field-prof {
@@ -54,10 +67,23 @@
   
 
   .about-text-input-prof {
-    min-height: 200px;
-    padding: 1rem;
-    font-size: 1rem;
-    line-height: 1.5;
+    min-height: 50px;
+    padding: 8px 10px;
+    font-size: 16px;
+    line-height: 0.8;
+    resize: vertical;
+    border: 1px solid #8a8989;
+    border-radius: 0.5rem;
+    background-color: #111111;
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .hashtags-text-input-prof{
+    min-height: 75px;
+    padding: 12px 10px;
+    font-size: 16px;
+    line-height: 1.3;
     resize: vertical;
     border: 1px solid #8a8989;
     border-radius: 0.5rem;

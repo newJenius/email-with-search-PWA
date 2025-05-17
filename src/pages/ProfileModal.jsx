@@ -19,7 +19,7 @@ export default function ProfileModal() {
 
     const { data, error } = await supabase
       .from('profiles')
-      .select('id, username, real_name, avatar, bio, about_me, price_per_message')
+      .select('id, username, real_name, avatar, bio, price_per_message, sut_zaprosa, format_svyazi, hashtags_user')
       .eq('id', id)
       .single();
 
@@ -74,20 +74,18 @@ export default function ProfileModal() {
       </div>
       
       <div className='otkrit-k-pf-podal'>
-        <p className='otkrit-k-text-pf-modal'>Открыт к...</p>
-        <p className='otkrit-k-subtext-pf-modal'>Готов отвечать на техвопросы и обсуждать коллаборации.</p>
+        <p className='otkrit-k-text-pf-modal'>Суть запроса ко мне</p>
+        <p className='otkrit-k-subtext-pf-modal'>{profile.sut_zaprosa}</p>
       </div>
 
       <div className='format-sv-pf-modal'>
         <p className='format-sv-text-pf-modal'>Формат связи</p>
-        <p className='format-sv-subtext-pf-modal'>Предпочитаю краткие и конкретные сообщения. Отвечаю в течение 2 дней.</p>
+        <p className='format-sv-subtext-pf-modal'>{profile.format_svyazi}</p>
       </div>
 
       <div className='hashtags-pf-modal'>
         <p className='hashtags-text-pf-modal'>Хэштеги</p>
-        <p className='hashtags-subtext-pf-modal'>#csgoawp#3k#csgohighlights#csgotips#csgoedit
-          #video#freecsgoknife#steelseries#csclips
-          #stream#shroud#steam#faceit#play</p>
+        <p className='hashtags-subtext-pf-modal'>{profile.hashtags_user}</p>
       </div>
 
       <div className='comments-pf-modal'>

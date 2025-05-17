@@ -29,8 +29,11 @@
 
   .otkrit-k-pf-podal{
     background-color: #191919;
-    position: absolute;
+    position: relative;
+    width: 100vw;
+    margin-bottom: 5px;
     margin-top: -23px;
+    padding: 0.2dvh 0px;
   }
 
   .otkrit-k-text-pf-modal{
@@ -41,6 +44,7 @@
   .otkrit-k-subtext-pf-modal{
     margin-left: 10px;
     margin-top: -15px;
+    margin-right: 10px;
     font-style: italic;
   }
 
@@ -57,14 +61,18 @@
 
   .format-sv-pf-modal{
     background-color: #191919;
-    position: absolute;
-    margin-top: 13vh;
+    position: relative;
+    width: 100vw;
+    padding: 1px 0px;
+    margin-bottom: 5px;
   }
 
   .hashtags-pf-modal{
     background-color: #191919;
-    position: absolute;
-    margin-top: 29.3vh;
+    width: 100vw;
+    position: relative;
+    padding: 1px 0px;
+    margin-bottom: 10px;
   }
 
   .hashtags-text-pf-modal{
@@ -81,8 +89,8 @@
 
   .comments-pf-modal{
     background-color: #191919;
-    position: absolute;
-    margin-top: 49.1vh;
+    position: relative;
+    padding: 1px 0px;
     width: 100vw;
   }
 

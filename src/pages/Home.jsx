@@ -41,8 +41,8 @@ export default function SearchPage() {
 
     const { data, error } = await supabase
       .from('profiles')
-      .select('id, username, real_name, bio, avatar, about_me')
-      .or(`username.ilike.%${value}%,real_name.ilike.%${value}%,bio.ilike.%${value}%,about_me.ilike.%${value}%`);
+      .select('id, username, real_name, bio, avatar, sut_zaprosa, format_svyazi, hashtags_user')
+      .or(`username.ilike.%${value}%,real_name.ilike.%${value}%,bio.ilike.%${value}%,sut_zaprosa.ilike.%${value}%,format_svyazi.ilike.%${value}%,hashtags_user.ilike.%${value}%`);
 
     if (!error) {
       setResults(data);
