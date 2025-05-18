@@ -79,7 +79,7 @@
   .card-containerr{
     flex:1;
     display: flex;
-    padding-top: 25vh;
+    padding-top: 30vh;
     align-items: center;
     background-color: #000000;
   }
