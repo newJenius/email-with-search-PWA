@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "./lib/supabaseClient.js";
 
@@ -18,6 +18,7 @@ import InviteRedirect from "./pages/InvitedRedirect.jsx";
 import InviteRegScreen from "./pages/InviteRegScreen.jsx";
 import MessageListener from "./pages/MessageListener.jsx";
 import Confirm from "./pages/Confirm.jsx";
+import CommentsPage from "./pages/CommentsPage.jsx";
 
 
 function App() {
@@ -33,6 +34,11 @@ function App() {
     };
     getSession();
   }, []);
+
+  function CommentsWrapper() {
+    const { id } = useParams();
+    return <CommentsPage profileId={id} />;
+  }
   
   // Загрузка состояния из localStorage при первом рендере
   useEffect(() => {
@@ -79,6 +85,10 @@ function App() {
             <Route path="/invite" element={<InviteModal />} />
             <Route path="/invite/:username" element={<InviteRedirect />} />
             <Route path="/confirm" element={<Confirm />} />
+            <Route path="/profile/:id/comments" element={<CommentsWrapper />} />
+
+
+
             
           </Routes>
         
@@ -92,6 +102,8 @@ function App() {
   
     
   );
+
+ 
 }
 
 export default App;

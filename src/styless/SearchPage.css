@@ -4,19 +4,29 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   .search-bar-searchtab {
     display: flex;
     align-items: center;
     background: none;
-    padding-top: 6px;
+    padding-top: 65px;
     background-color: #000000;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
+    margin-left: 6px;
     position: fixed;
-    bottom: 48px;
-    width: 100vw;
+    top: 0px;
+    width: 97vw;
     border-top: 0.1px solid rgb(46, 46, 46);
+  }
+
+  .header-nermes-logo-searchtab{
+    background-color: #000000;
+    margin-left: 13px;
+    font-size: 26px;
+    z-index: 1000;
+    position: fixed;
   }
 
   .icon-bars-topbar-searchtab{
@@ -39,12 +49,12 @@
   
   .search-input-searchtab {
     flex: 1;
-    padding: 8px 16px;
+    padding: 8px 24px;
     margin-left: 6px;
     margin-right: 6px;
     border: none;
     border-radius: 8px;
-    background-color: #272727;
+    background-color: #191919;
     font-size: 16px;
     outline: none;
     z-index: 1000;
@@ -68,8 +78,10 @@
   
   .search-results-searchtab {
     list-style: none;
-    padding: 0px 4px;
-    margin: 0px;
+    padding: 0px 18px;
+    margin-top: 11vh;
+    padding-bottom: 10vh;
+    background-color: #000000;
   }
   
   .search-result-item-searchtab {
@@ -103,11 +115,22 @@
   
   .bio-searchtab {
     color: #888;
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  .sut_zaprosa-searchtab{
+    font-size: 14px;
+    padding-top: 8px;
+    color: #3b82f6;
+  }
+
+  .hashtags-searchtab{
+    font-size: 13px;
+    color: #888;
   }
   
   .close-btn-searchtab {
-    background: none;
+    background: none; 
     border: none;
     font-size: 20px;
     color: #999;
@@ -118,7 +141,7 @@
   .clear-button-searchtab {
     position: absolute;
     right: 12px;
-    top: 45%;
+    top: 78%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -129,6 +152,12 @@
     justify-content: center;
     color: #a5a5a5;
     z-index: 1001;
+  }
+
+  .search-icon-header-searchtab{
+    position: fixed;
+    z-index: 5000;
+    margin-left: 10px;
   }
 
   .text-searchbar-blbl-container{

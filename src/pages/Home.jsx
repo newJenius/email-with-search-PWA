@@ -63,9 +63,10 @@ export default function SearchPage() {
 
   return (
     <div className="search-page-searchtab">
+      <h2 className='header-nermes-logo-searchtab'>Nermes</h2>
       <div className="search-bar-searchtab relative">
       <IoIosSearch 
-        className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none'
+        className='search-icon-header-searchtab'
         size={16}
       />
         <input 
@@ -99,16 +100,16 @@ export default function SearchPage() {
         )}
       </div>
 
-      <div className='icon-bars-topbar-searchtab'>
+      {/* <div className='icon-bars-topbar-searchtab'> */}
         {/* <button className='bars-icon-searchtab'>
           <FaBarsStaggered size={18}/> 
         </button> */}
 
-        <button className='chat-icon-searchtab'
+        {/* <button className='chat-icon-searchtab'
         onClick={() => navigate('/about')}>
           <FaInfo size={18}/>
         </button>
-        </div>
+        </div> */}
 
 
         {query.trim() === '' && (
@@ -128,6 +129,8 @@ export default function SearchPage() {
             <div className="user-details-searchtab">
               <span className="username-searchtab">{user.real_name}</span>
               <span className="bio-searchtab">{user.bio}</span>
+              <span className='sut_zaprosa-searchtab'>{user.sut_zaprosa}</span>
+              <span className='hashtags-searchtab'>{user.hashtags_user}</span>
             </div>
             {/* <button className="close-btn-searchtab">&times;</button> */}
           </li>

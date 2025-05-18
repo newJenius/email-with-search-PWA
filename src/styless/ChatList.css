@@ -5,6 +5,7 @@
   width: 100vw;
   overflow-y: auto;
   background-color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .chat-list-item-clst {

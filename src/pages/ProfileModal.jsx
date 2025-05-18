@@ -92,7 +92,7 @@ export default function ProfileModal() {
       </div>
 
 
-      <button className='comments-btn-pf-modal' onClick={() => navigate('/comments:id')}>
+      <button className='comments-btn-pf-modal' onClick={() => navigate('/profile/:id/comments')}>
       <div className='comments-pf-modal'>
         <p className='comments-text-pf-modal'>Посмотреть отзывы других людей</p>
       </div>
