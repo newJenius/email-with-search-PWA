@@ -3,6 +3,8 @@ import '../styless/ProfileModal.css';
 import { supabase } from '../lib/supabaseClient';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useUI } from '../components/uiContext';
+import { PiAsterisk } from "react-icons/pi";
+
 
 export default function ProfileModal() {
   const { id } = useParams();
@@ -69,6 +71,7 @@ export default function ProfileModal() {
           <div className="avatar placeholder-pf-modal" />
         )}
          <h2 className='real_name-pf-modal'>{profile.real_name}</h2>
+         <p className="username-pf-modal">@{profile.username}</p>
          <p className='bio-pf-modal'>{profile.bio || 'No bio yet.'}</p>
       </div>
       </div>
@@ -88,13 +91,15 @@ export default function ProfileModal() {
         <p className='hashtags-subtext-pf-modal'>{profile.hashtags_user}</p>
       </div>
 
+
+      <button className='comments-btn-pf-modal' onClick={() => navigate('/comments:id')}>
       <div className='comments-pf-modal'>
         <p className='comments-text-pf-modal'>Посмотреть отзывы других людей</p>
       </div>
+      </button>
      
       
-      <p className="username-pf-modal">@{profile.username}</p>
-      <div className='border-bottom-pf-modal'></div>
+      
 
       {/* <div className="about_me-box-pf-modal">
         <p>{profile.about_me || 'Пользователь не ввел данные.'}</p>

@@ -71,7 +71,7 @@ export default function ChatScreen() {
         .single();
       if (!profileError && profileData) {
         setProfile(profileData);
-        setPricePerMessage(profileData.price_per_message || 200);
+        setPricePerMessage(profileData.price_per_message || 20);
       }
   
       const { data: { user }, error: userError } = await supabase.auth.getUser();
