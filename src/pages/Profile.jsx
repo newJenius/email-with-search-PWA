@@ -168,7 +168,7 @@ export default function Profile() {
         <label className="field-label-prof">Формат связи</label>
         <textarea
           value={profile.format_svyazi}
-          className="about-text-input-prof"
+          className="about2-text-input-prof"
           placeholder="Предпочитаю краткие и конкретные сообщения."
           onChange={(e) => setProfile({ ...profile, format_svyazi: e.target.value })}
         />
