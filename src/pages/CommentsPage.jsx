@@ -12,11 +12,15 @@ export default function CommentsPage({ profileId }) {
 
   useEffect(() => {
     const getUser = async () => {
+      if (!profileId) return;
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUserId(user.id);
         checkIfUserCanComment(user.id);
       }
+      console.log('profileId:', profileId);
+      console.log('Fetching user...');
+
     };
     getUser();
   }, [profileId]);
@@ -28,23 +32,29 @@ export default function CommentsPage({ profileId }) {
       .eq('sender_id', currentUserId)
       .eq('receiver_id', profileId)
       .eq('paid', true)
-      .eq('has_been_answered', true)
       .limit(1);
 
     if (data && data.length > 0) {
       setCanComment(true);
     }
+    console.log('Checking canComment for user:', currentUserId, '-> profile:', profileId);
+    console.log('Querying messages with conditions...');
+    console.log('sender_id =', currentUserId);
+    console.log('receiver_id =', profileId);
+    console.log('Supabase response:', data, error);
+
   };
 
   const fetchComments = async () => {
     setLoading(true);
     const { data, error } = await supabase
       .from('comments')
-      .select('content, created_at, profiles!author_id(real_name, avatar)')
+      .select('content, created_at, author:author_id(real_name, avatar)')
       .eq('profile_id', profileId)
       .order('created_at', { ascending: false });
 
     if (!error) setComments(data);
+    else console.error('Error loading comments:', error);
     setLoading(false);
   };
 
@@ -86,13 +96,13 @@ export default function CommentsPage({ profileId }) {
           {comments.map((comment, idx) => (
             <li key={idx} className="comment">
               <img
-                src={comment.profiles.avatar || '/default-avatar.png'}
+                src={comment.author.avatar || '/default-avatar.png'}
                 alt="avatar"
                 className="comment-avatar"
               />
               <div className="comment-body">
                 <div className="comment-header">
-                  <span className="comment-author">{comment.profiles.real_name}</span>
+                  <span className="comment-author">{comment.author.real_name}</span>
                   <span className="comment-date">{new Date(comment.created_at).toLocaleDateString()}</span>
                 </div>
                 <p className="comment-content">{comment.content}</p>
@@ -108,6 +118,7 @@ export default function CommentsPage({ profileId }) {
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Оставьте отзыв..."
+            className="comment-input"
           />
           <button type="submit" className="comment-submit" disabled={submitting}>
             {submitting ? 'Отправка...' : 'Оставить отзыв'}
