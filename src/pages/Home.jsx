@@ -115,7 +115,7 @@ export default function SearchPage() {
         {query.trim() === '' && (
           <div className='card-containerr'>
         <div className="card-hm">
-          <h2 className="card-title-hm">Платформа где инвестириуют в связи!</h2>
+          <h2 className="card-title-hm">Платформа где инвестируют в связи!</h2>
           <p className="card-subtitle-hm">Начните использовать поиск чтобы найти доступ к тем, кому в других местах не достучаться.</p>
         </div>
         </div>
