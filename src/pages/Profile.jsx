@@ -111,6 +111,12 @@ export default function Profile() {
       ...profile,
       id: user.id,
     };
+
+    if (profile.real_name.length > 60 || profile.bio.length > 80 || profile.sut_zaprosa.length > 320 || profile.format_svyazi.length > 120 || profile.hashtags_user.length > 500) {
+      alert("Некоторые поля превышают допустимую длину.");
+      return;
+    }
+    
   
     const { error } = await supabase.from("profiles").upsert(updates);
     if (error) console.error(error);
@@ -158,12 +164,14 @@ export default function Profile() {
         placeholder="Тони Старк"
         value={profile.real_name}
         onChange={(v) => setProfile({ ...profile, real_name: v })}
+        maxLength={60}
       />
       <Field
         label="Краткое описание себя"
         placeholder="Гений, Миллиардер, Плэйбой, Филантроп."
         value={profile.bio}
         onChange={(v) => setProfile({ ...profile, bio: v })}
+        maxLength={80}
       />
       <Field
         label="Цена за связь с вами"
@@ -180,6 +188,7 @@ export default function Profile() {
           className="about-text-input-prof"
           placeholder="Пишите о том, что делает вас вами."
           onChange={(e) => setProfile({ ...profile, sut_zaprosa: e.target.value })}
+          maxLength={320}
         />
       </div>
 
@@ -190,6 +199,7 @@ export default function Profile() {
           className="about2-text-input-prof"
           placeholder="Предпочитаю краткие и конкретные сообщения."
           onChange={(e) => setProfile({ ...profile, format_svyazi: e.target.value })}
+          maxLength={120}
         />
       </div>
 
@@ -200,6 +210,7 @@ export default function Profile() {
           className="hashtags-text-input-prof"
           placeholder="Для поисковика."
           onChange={(e) => setProfile({ ...profile, hashtags_user: e.target.value })}
+          maxLength={500}
         />
       </div>
 

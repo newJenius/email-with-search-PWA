@@ -406,6 +406,14 @@ export default function ChatScreen() {
 
   if (!profile) return <div className='loading-container-maain'></div>;
 
+  <input
+  type="file"
+  id="file-upload"
+  style={{ display: 'none' }}
+  onChange={handleFileChange}
+  />
+
+
   return (
     <div className="chat-screen-cs">
       <div className="chat-header-cs">
@@ -529,7 +537,10 @@ export default function ChatScreen() {
 
                 <div className="input-actions">
                   <label htmlFor="file-upload" className="attach-button-cs">
-                    <FiPaperclip size={20} />
+                    <FiPaperclip
+                    onClick={() => document.getElementById('file-upload').click()}
+                    style={{cursor: 'pointer'}}
+                    size={20} />
                   </label>
                   <input
                     id="file-upload"
