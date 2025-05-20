@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
+import { useNavigate } from "react-router-dom";
 import "../styless/Profile.css";
 
 export default function Profile() {
@@ -17,27 +18,35 @@ export default function Profile() {
     format_svyazi: "",
   });
   const [avatarFile, setAvatarFile] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadProfile();
   }, []);
 
   const loadProfile = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user }, error } = await supabase.auth.getUser();
+  
+    if (error || !user) {
+      setUserId(null);
+      setLoading(false);
+      return;
+    }
+  
     setUserId(user.id);
-
-
-    const { data, error } = await supabase
+  
+    const { data, error: profileError } = await supabase
       .from("profiles")
       .select("*")
       .eq("id", user.id)
       .single();
-
-    if (error) console.error(error);
+  
+    if (profileError) console.error(profileError);
     else setProfile(data);
-
+  
     setLoading(false);
   };
+  
 
   const handleAvatarUpload = async () => {
     if (!avatarFile) return;
@@ -107,10 +116,20 @@ export default function Profile() {
     if (error) console.error(error);
     else alert("Профиль сохранён.");
   };
+
+
+  if(loading){
+    return <div>Загрузка...</div>;
+  }
+
+  if (!userId) {
+    return (
+      <div className="reg-profile-container-prof">
+        <button onClick={() => navigate('/register')} className="regis-button-prof">Зарегистрироваться</button>
+      </div>
+    );
+  }
   
-
- 
-
   return (
     <div className="profile-container-prof">
       <div className="avatar-preview-prof">

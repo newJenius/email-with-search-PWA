@@ -37,6 +37,13 @@ export default function ChatScreen() {
   const [isFocused, setIsFocused] = useState(false);
   const textareaRef = useRef(null);
   const [profilesMap, setProfilesMap] = useState({});
+  const [lastReadMessageId, setLastReadMessageId] = useState(null);
+  const messageRefs = useRef({});
+  const [attachedFile, setAttachedFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+
+
 
   useEffect(() => {
     const senderIds = [...new Set(messages.map(msg => msg.sender_id))];
@@ -134,23 +141,39 @@ export default function ChatScreen() {
     }
   };
   
+  const isUserNearBottom = () => {
+    const ref = flatListRef.current;
+    return Math.abs(ref.scrollHeight - ref.scrollTop - ref.clientHeight) < 150;
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setAttachedFile(file);
+      setPreviewUrl(URL.createObjectURL(file));
+    }
+  };
+  
   
   
 
   useEffect(() => {
-    const ref = flatListRef.current;
-    if (!ref) return;
+    if (!messages.length || !lastReadMessageId) return;
   
-    const isAtBottom = Math.abs(ref.scrollHeight - ref.scrollTop - ref.clientHeight) < 50;
+    const firstUnread = messages.find(m => m.id > lastReadMessageId);
+    if (!firstUnread) return;
   
-    if (isAtBottom) {
-      const timeout = setTimeout(() => {
-        ref.scrollTop = ref.scrollHeight;
-      }, 100);
+    const el = messageRefs.current[firstUnread.id];
+    if (!el) return;
+
+    if (!isUserNearBottom()) return; // не скроллим, если юзер не внизу
+
   
-      return () => clearTimeout(timeout);
-    }
-  }, [messages]);
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [messages, lastReadMessageId]);
+  
+  
+  
   
 
   useEffect(() => {
@@ -306,6 +329,8 @@ export default function ChatScreen() {
       }
   
       setMessage('');
+      setAttachedFile(null);
+      setPreviewUrl(null);
       setConfirmPreview(false);
       await fetchMessages(senderId);
     } catch (e) {
@@ -407,7 +432,12 @@ export default function ChatScreen() {
           const isMyMessage = item.sender_id === senderId;
           const isTheirMessage = item.sender_id === id;
           return (
-            <div className={`message-wrapper-cs ${isMyMessage ? 'my-wrapper-cs' : 'their-wrapper-cs'}`}>
+            <div
+              key={item.id}
+              ref={el => {
+                if(el) messageRefs.current[item.id] = el;
+              }}
+              className={`message-wrapper-cs ${isMyMessage ? 'my-wrapper-cs' : 'their-wrapper-cs'}`}>
               <div className={`chat-bubble-cs ${isMyMessage ? 'my-message-cs' : 'their-message-cs'}`}>
                 
                 <div className="message-meta-cs">
@@ -466,6 +496,16 @@ export default function ChatScreen() {
           </div>
         ) : (
           <div className={`input-wrapper-cs ${isFocused || message ? 'expanded' : 'collapsed'}`}>
+            
+            {previewUrl && (
+              <div className="attachment-preview-container">
+                <div className="attachment-preview">
+                  <img src={previewUrl} alt="Preview" className="preview-image" />
+                </div>
+              </div>
+            )}
+            
+            
             <textarea
               ref={textareaRef}
               className="input-field-cs"
@@ -486,9 +526,19 @@ export default function ChatScreen() {
                 >
                   {loading ? '...' : <SendHorizonal size={20} />}
                 </button>
-                <button className="attach-button-cs">
-                  <FiPaperclip size={20} />
-                </button>
+
+                <div className="input-actions">
+                  <label htmlFor="file-upload" className="attach-button-cs">
+                    <FiPaperclip size={20} />
+                  </label>
+                  <input
+                    id="file-upload"
+                    type="file"
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    onChange={handleFileChange}
+                  />
+                </div>
               </>
             )}
           </div>

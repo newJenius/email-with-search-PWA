@@ -131,4 +131,18 @@
   .save-button-prof:hover {
     background-color: #2d3748;
   }
+
+  .reg-profile-container-prof{
+    background-color: #000000;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
   
+  .regis-button-prof{
+    background-color: #2d78fa;
+    width: 80vw;
+  }

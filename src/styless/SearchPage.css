@@ -175,4 +175,32 @@
     z-index: 101;
   }
   
+  .hashtag-suggestions {
+    position: absolute;
+    top: 110px;
+    left: 16px;
+    right: 16px;
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    z-index: 1000;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  
+  .hashtag-item {
+    padding: 8px 12px;
+    color: #3b82f6;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #222;
+  }
+  
+  .hashtag-item:last-child {
+    border-bottom: none;
+  }
+  
+  .hashtag-item:hover {
+    background-color: #1c1c1c;
+  }
   

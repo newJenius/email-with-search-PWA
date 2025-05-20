@@ -18,6 +18,20 @@ export default function SearchPage() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const inputRef = useRef(null);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [popularHashtags, setPopularHashtags] = useState([]);
+
+
+  useEffect(() => {
+    const fetchHashtags = async () => {
+      const { data, error } = await supabase.rpc('popular_hashtags');
+      if (!error) {
+        setPopularHashtags(data.map(item => `#${item.tag}`));
+      }
+    };
+    fetchHashtags();
+  }, []);
+
   // const { setBottomNavVisible } = useUI();
 
   // useEffect(() => {
@@ -70,11 +84,13 @@ export default function SearchPage() {
         size={16}
       />
         <input 
-          ref={inputRef}
+          // ref={inputRef}
           className="search-input-searchtab"
-          placeholder="Поиск человечности"
+          placeholder="Поиск"
           value={query}
           onChange={(e) => searchUsers(e.target.value)}
+          onFocus={() => setIsInputFocused(true)}
+          onBlur={() => setTimeout(() => setIsInputFocused(false), 100)} // небольшой таймер, чтобы можно было кликнуть на хэштег
         />
         {/* <button
           onClick={() => {
@@ -99,6 +115,23 @@ export default function SearchPage() {
         
         )}
       </div>
+      {isInputFocused && query.trim() === '' && (
+        <div className="hashtag-suggestions">
+          {popularHashtags.map((tag, index) => (
+            <div
+              key={index}
+              className="hashtag-item"
+              onClick={() => {
+                setQuery(tag);
+                searchUsers(tag);
+              }}
+            >
+              {tag}
+            </div>
+          ))}
+        </div>
+      )}
+
 
       {/* <div className='icon-bars-topbar-searchtab'> */}
         {/* <button className='bars-icon-searchtab'>

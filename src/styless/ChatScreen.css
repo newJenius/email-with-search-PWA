@@ -375,4 +375,24 @@
   line-height: 1;
 }
 
+.attachment-preview-container {
+  width: 100%;
+  padding: 8px 0;
+}
 
+.attachment-preview {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.paperclip-icon {
+  cursor: pointer;
+  margin-right: 8px;
+  color: #666;
+}
