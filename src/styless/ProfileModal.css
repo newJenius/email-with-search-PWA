@@ -61,6 +61,7 @@
   .format-sv-pf-modal{
     background-color: #191919;
     position: relative;
+    color: white;
     width: 100vw;
     padding: 1px 0px;
     margin-bottom: 5px;
@@ -71,6 +72,7 @@
     width: 100vw;
     position: relative;
     padding: 1px 0px;
+    color: white;
     margin-bottom: 10px;
   }
 
@@ -94,6 +96,7 @@
   }
 
   .comments-btn-pf-modal{
+    background-color: #000000;
     width: 100vw;
   }
 
