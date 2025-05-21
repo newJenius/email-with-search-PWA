@@ -55,7 +55,7 @@ export default function ProfileModal() {
 
 
 
-  if (loading) return <div className="centered-pf-modal"></div>;
+  if (loading) return <div className="centered-pf-modal">Загрузка...</div>;
   if (!profile) return <div className="centered-pf-modal">Profile not found.</div>;
 
   return (
@@ -74,7 +74,7 @@ export default function ProfileModal() {
          <p className="username-pf-modal">@{profile.username}</p>
          <p className='bio-pf-modal'>{profile.bio || 'No bio yet.'}</p>
       </div>
-      </div>
+      </div> 
       
       <div className='otkrit-k-pf-podal'>
         <p className='otkrit-k-text-pf-modal'>Суть запроса ко мне</p>

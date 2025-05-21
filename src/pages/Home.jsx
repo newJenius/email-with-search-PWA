@@ -26,7 +26,7 @@ export default function SearchPage() {
     const fetchHashtags = async () => {
       const { data, error } = await supabase.rpc('popular_hashtags');
       if (!error) {
-        setPopularHashtags(data.map(item => `#${item.tag}`));
+        setPopularHashtags(data.map(item => `${item.tag}`));
       }
     };
     fetchHashtags();
