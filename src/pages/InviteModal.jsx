@@ -93,35 +93,37 @@ export default function InviteModal({ onClose }) {
   };
   
 
-  if (loading) return <p>Загрузка...</p>;
+  if (loading) return <p className='loading-im'>Загрузка...</p>;
 
   return (
-    
-    <div className='invitemodal-container-im'>
+    <div className='invitemodall-container-im'>
+      <div className='invitemodall-im'>
       
-      <h1>Работы еще ведутся!!!</h1>
+      <h1 className='h1-im'>Работы еще ведутся!!!</h1>
       {/*<h3>Пригласи друга</h3>
       <p>Скопируй ссылку и получи бонус:</p>
       <input value={link} readOnly style={{ width: '100%' }} />
       <button onClick={copy}>Скопировать</button>
       <button onClick={onClose}>Закрыть</button> */}
 
-        <h2>Еще ведутся работы!!!</h2>
+        {/* <h2>Еще ведутся работы!!!</h2> */}
 
         <h2>Ежедневная награда</h2>
-
+      <div className='btn-claim-container-im'>
       {claimAvailable ? (
-        <button onClick={handleClaim} disabled={claiming}>
-          {claiming ? "Загрузка..." : "Получить 25 доступов"}
+        <button className='btn-claim-im' onClick={handleClaim} disabled={claiming}>
+          {claiming ? "Загрузка..." : "Получить +25 доступов"}
         </button>
       ) : (
          <p>Бонус уже получен сегодня</p>
       )}
+      </div>
 
-      <h2>Задания (в будущем)</h2>
+      {/* <h2>Задания (в будущем)</h2>
       <p>Заполнить профиль</p>
-      <p>пригласить друзей. за каждого 50 доступов</p>
+      <p>пригласить друзей. за каждого 50 доступов</p> */}
 
+      </div>
     </div>
   );
 }

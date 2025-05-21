@@ -11,8 +11,41 @@ export default function ChatListScreen() {
   const [chatList, setChatList] = useState([]);
   const [showInvite, setShowInvite] = useState(false);
   const [balance, setBalance] = useState(null);
+  const [claimAvailable, setClaimAvailable] = useState(false);
+  const [claiming, setClaiming] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkClaimStatus = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('last_claimed_at')
+        .eq('id', user.id)
+        .single();
+
+      if (error) {
+        console.error('Ошибка при проверке бонуса:', error);
+        return;
+      }
+
+      const now = new Date();
+      const today8AM = new Date();
+      today8AM.setHours(8, 0, 0, 0);
+      if (now < today8AM) today8AM.setDate(today8AM.getDate() - 1); // если раньше 8 утра — берем вчера
+
+      const lastClaimed = data?.last_claimed_at ? new Date(data.last_claimed_at) : null;
+
+      if (!lastClaimed || lastClaimed < today8AM) {
+        setClaimAvailable(true);
+      }
+    };
+
+    checkClaimStatus();
+  }, []);
 
 
   useEffect(() => {
@@ -128,7 +161,16 @@ export default function ChatListScreen() {
       <div className='balance-btn-clst'>
         <p className='balance-text-clst'>Доступов: {balance ?? '...'}</p>
         <p className='balance-text1-clst'>Тратьте доступы с умом они конечны!</p>
-        <button className='buy-button-clst' onClick={() => navigate('/invite')}>+Доступ</button>
+        {/* <button className='buy-button-clst' onClick={() => navigate('/invite')}>+Доступ</button> */}
+        <div className='btn-claim-container-im'>
+          {claimAvailable ? (
+            <button className='btn-claim-im' onClick={handleClaim} disabled={claiming}>
+            {claiming ? "Загрузка..." : "Получить +25 доступов"}
+          </button>
+          ) : (
+          <p>Бонус уже получен сегодня</p>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -125,7 +125,7 @@ export default function Profile() {
 
 
   if(loading){
-    return <div>Загрузка...</div>;
+    return <div className="loading-screen-prof">Загрузка...</div>;
   }
 
   if (!userId) {
