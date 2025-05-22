@@ -230,9 +230,9 @@ export default function Profile() {
         Сохранить Профиль
       </button>
 
-      <button className="logout-button-prof" onClick={handleLogout}>
+      {/* <button className="logout-button-prof" onClick={handleLogout}>
         Выйти из аккаунта
-      </button>
+      </button> */}
 
 
     </div>
