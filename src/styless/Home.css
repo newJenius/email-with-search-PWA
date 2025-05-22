@@ -80,8 +80,11 @@
     flex:1;
     display: flex;
     padding-top: 30vh;
+    background-color: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
     align-items: center;
-    background-color: #000000;
   }
   
   .card-hm {
