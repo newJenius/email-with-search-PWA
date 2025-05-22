@@ -93,6 +93,7 @@
     background-color: #191919;
     position: relative;
     padding: 1px 0px;
+    
   }
 
   .comments-btn-pf-modal{
@@ -103,6 +104,11 @@
   .comments-text-pf-modal{
     color: #0044ff;
     text-align: center;
+  }
+
+  .comments-padding-bottom-pf-modal{
+    padding-bottom: 30vh;
+    background-color: #000000;
   }
 
   .avatar-container-pf-modal{
