@@ -123,6 +123,16 @@ export default function Profile() {
     else alert("Профиль сохранён.");
   };
 
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Ошибка при выходе из аккаунта:", error);
+      return;
+    }
+    navigate("/register"); // Или другой маршрут, куда должен попасть пользователь
+  };
+  
+
 
   if(loading){
     return <div className="loading-screen-prof">Загрузка...</div>;
@@ -135,6 +145,8 @@ export default function Profile() {
       </div>
     );
   }
+
+
   
   return (
     <div className="profile-container-prof">
@@ -217,6 +229,12 @@ export default function Profile() {
       <button className="save-button-prof" onClick={saveProfile}>
         Сохранить Профиль
       </button>
+
+      <button className="logout-button-prof" onClick={handleLogout}>
+        Выйти из аккаунта
+      </button>
+
+
     </div>
   );
 }
