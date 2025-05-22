@@ -78,7 +78,7 @@ export default function SearchPage() {
   return (
     <div className="search-page-searchtab">
       <h2 className='header-nermes-logo-searchtab'>Nermes</h2>
-      <p className='founder-link-logo-searchtab'>Основатель для связи: @founderNermes</p>
+      
       <div className="search-bar-searchtab relative">
       <IoIosSearch 
         className='search-icon-header-searchtab'
@@ -151,6 +151,7 @@ export default function SearchPage() {
         <div className="card-hm">
           <h2 className="card-title-hm">Платформа где инвестируют в связи!</h2>
           <p className="card-subtitle-hm">Начните использовать поиск чтобы найти доступ к тем, кому в других местах не достучаться.</p>
+          <p className='founder-link-logo-searchtab'>Основатель для связи: @founderNermes</p>
         </div>
         </div>
       )}
