@@ -207,4 +207,15 @@
   .hashtag-item:hover {
     background-color: #1c1c1c;
   }
+
+  .founder-link-logo-searchtab{
+    color: #3b82f6;
+    z-index: 1000;
+    bottom: 0;
+    opacity: 80%;
+    margin-left: 20vw;
+    height: 8vh;
+    font-size: 13px;
+    position: absolute;
+  }
   
